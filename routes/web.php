@@ -11,6 +11,9 @@ Route::get('/', [indexControllers::class, 'index']);
 
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

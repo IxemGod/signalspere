@@ -46,7 +46,7 @@
             <h3>Informations</h3>
             <ul>
                 <li><a href="#">Mon compte</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Mentions Légales</a></li>
                 <li><a href="#">Plan du site</a></li>
                 <li><a href="#">Politique de confidentialité</a></li>

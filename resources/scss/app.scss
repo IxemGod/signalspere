@@ -125,190 +125,280 @@ body{
     }
 
 
-        .fondListeProduit{
-            display: flex;
-            flex-direction: column;
-            background-color: #2A2E30;
-            width: 100%;
-            padding: 20px;
-            justify-content: center;
-            align-items: center;
+    .fondListeProduit{
+        display: flex;
+        flex-direction: column;
+        background-color: #2A2E30;
+        width: 100%;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
 
-            .container{
-                width: 90%;
-               
+        .container{
+            width: 90%;
+            
+        }
+
+        .listeProduit{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            h2{
+                font-size: 2.488rem;
+                font-family: "Poppins", sans-serif;
+                font-weight: bold;
+                color: #F17D25;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                width: 100%;
+
             }
 
-            .listeProduit{
+            .produit{
                 display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                flex-wrap: wrap;
-                gap: 20px;
+                flex-direction: column;
+                background-color: white;
+                align-items: center;
+                // gap: 5px;
+                // justify-content: center;
+                // align-self: center;
+                // justify-self: center;
+                width: 250px;
+                height: 370px;
+                
+                
+
+                p{
+                    text-align: center;
+                }
+
+                .prix{
+                    color: #F17D25;
+                    font-weight: bold;
+                }
+
+                a{
+                    padding: 5px;
+                    width:80%;
+                    text-align: center;
+                    background-color: #2A2E30;
+                    color: white;
+                }
+
+                img{
+                    width: 250px;
+                    height: 250px;
+                }
+            }
+        }
+
+    }
+    
+
+    .Apropos{
+
+        
+
+        .container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            .text{
+                width: 50%;
+                margin-top: 20px;
+                padding: 50px;
+
+                h3{
+                    font-size: 2.074rem;
+                    font-weight: bold;
+                    text-align: left;
+                    margin-bottom: 5%;
+                }
+
+                p{
+                    font-weight: bold;
+                    font-size: 1rem;
+                    margin-bottom: 30px;
+                }
+            }
+
+            .imgApropos{
+                width: 600px;
+                // height: 40%;
+            }
+        }
+    }
+
+    .DetailArticle{
+        width: 100%;
+
+        .ImageTitreBtn{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 50px;
+
+            img{
+                width: 600px;
+            }
+
+            div{
+                h1{
+                    font-size: 2.986rem;
+                }
 
                 h2{
                     font-size: 2.488rem;
-                    font-family: "Poppins", sans-serif;
-                    font-weight: bold;
-                    color: #F17D25;
-                    margin-top: 10px;
-                    margin-bottom: 10px;
-                    width: 100%;
-
+                    margin-top:1rem;
                 }
-
-                .produit{
-                    display: flex;
-                    flex-direction: column;
-                    background-color: white;
-                    align-items: center;
-                    // gap: 5px;
-                    // justify-content: center;
-                    // align-self: center;
-                    // justify-self: center;
-                    width: 250px;
-                    height: 370px;
-                    
-                    
-
-                    p{
-                        text-align: center;
-                    }
-
-                    .prix{
-                        color: #F17D25;
-                        font-weight: bold;
-                    }
-
-                    a{
-                        padding: 5px;
-                        width:80%;
-                        text-align: center;
-                        background-color: #2A2E30;
-                        color: white;
-                    }
-
-                    img{
-                        width: 250px;
-                        height: 250px;
-                    }
-                }
-            }
-
-        }
-        
-
-        .Apropos{
-
-           
-
-            .container{
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: center;
-                .text{
-                    width: 50%;
-                    margin-top: 20px;
-                    padding: 50px;
-
-                    h3{
-                        font-size: 2.074rem;
-                        font-weight: bold;
-                        text-align: left;
-                        margin-bottom: 5%;
-                    }
-
-                    p{
-                        font-weight: bold;
-                        font-size: 1rem;
-                        margin-bottom: 30px;
-                    }
-                }
-
-                .imgApropos{
-                    width: 600px;
-                    // height: 40%;
-                }
-            }
-        }
-
-        .DetailArticle{
-            width: 100%;
-
-            .ImageTitreBtn{
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                margin-top: 50px;
-                gap: 50px;
-
-                img{
-                    width: 600px;
-                }
-
-                div{
-                    h1{
-                        font-size: 2.986rem;
-                    }
-
-                    h2{
-                        font-size: 2.488rem;
-                        margin-top:1rem;
-                    }
-                    
-                    p{
-                        margin-top:1rem;
-                        font-size: 1rem;
-                    }
-
-                    form{
-                        input{
-                            width: 80px;
-                            background: #D9D9D9;
-                            border: 0px solid white;
-                            font-size: 2.074rem;
-                            padding : 5px;
-                            font-weight: bold;
-                        }
-
-                        button{
-                            width: 400px;
-                            background: #F17D25;
-                            border: 0px solid white;
-                            font-size: 2.074rem;
-                            color: black;
-                            font-weight: bold;
-                            padding: 5px;
-                            margin-left: 1rem;
-                            margin-top: 1rem;
-                        }
-                    }
-                }
-
-
-            }
-
-
-            fieldset{
-                border: 1px solid black;
-                margin-left: 10%;
-                width: 50%;
-                padding: 20px;
-                font-size: 1rem;
-                margin-bottom: 50px;
                 
+                p{
+                    margin-top:1rem;
+                    font-size: 1rem;
+                }
 
-                legend{
-                    margin-left: 50px;
-                    font-size: 2.488rem;
-                    font-family: "Poppins", sans-serif;
+                form{
+                    input{
+                        width: 80px;
+                        background: #D9D9D9;
+                        border: 0px solid white;
+                        font-size: 2.074rem;
+                        padding : 5px;
+                        font-weight: bold;
+                    }
+
+                    button{
+                        width: 400px;
+                        background: #F17D25;
+                        border: 0px solid white;
+                        font-size: 2.074rem;
+                        color: black;
+                        font-weight: bold;
+                        padding: 5px;
+                        margin-left: 1rem;
+                        margin-top: 1rem;
+                    }
+                }
+            }
+
+
+        }
+
+
+        fieldset{
+            border: 1px solid black;
+            margin-left: 10%;
+            width: 50%;
+            padding: 20px;
+            font-size: 1rem;
+            margin-bottom: 50px;
+            
+
+            legend{
+                margin-left: 50px;
+                font-size: 2.488rem;
+                font-family: "Poppins", sans-serif;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .containerContact{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        margin-top: 50px;
+
+        .contact{
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+
+            .h1Eth2{
+                h1{
+                    font-size: 2.986rem;
+                    font-weight: bold;
+                    margin-bottom: 0px;
+                    text-align: center;
+                }
+
+                p{
+                    font-size: 2.047rem;
+                    margin-top: -10px;
+                    text-align: center;
                     font-weight: bold;
                 }
             }
-        }
 
+            .formulaire{
+                width: 100%;
+
+                form{
+                    width: 100%;
+                    .NomEtPrénom{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        div{
+                            display: flex;
+                            flex-direction: column;
+
+                            label{
+                                font-size: 1rem;
+                                font-weight: bold;
+                            }
+                            
+                            input{
+                                padding: 3px;
+                                width:270px;
+                            }
+                        }
+                    }
+
+                    .object, .email, .message{
+                        display: flex;
+                        flex-direction: column;
+
+                        label{
+                            font-size: 1rem;
+                            font-weight: bold;
+                        }
+
+                        input{
+                            width: 100%;
+                            padding: 3px;
+                        }
+
+                        textarea{
+                            height: 200px;;
+                        }
+
+                       
+                    }
+                    button{
+                        color: white;
+                        background-color: #F17D25;
+                        padding: 15px;
+                        margin-top: 15px;
+                        margin-bottom: 15px;
+                        font-size: 20px;
+                        font-weight: bold;
+                    }
+
+                }
+            }
+        }
+    }
 
 }
 

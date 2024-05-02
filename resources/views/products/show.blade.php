@@ -1,6 +1,6 @@
 <!-- resources/views/products/show.blade.php -->
 @include("header")
-
+<title>{{ $product->name }} - SignalSphere</title>
 <section class="DetailArticle">
     <div class="ImageTitreBtn">
         <img src="https://www.gotechnique.com/{{ $product -> pictures }}" alt="{{ $product->name }}">
