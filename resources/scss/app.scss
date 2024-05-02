@@ -234,6 +234,81 @@ body{
             }
         }
 
+        .DetailArticle{
+            width: 100%;
+
+            .ImageTitreBtn{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 50px;
+                gap: 50px;
+
+                img{
+                    width: 600px;
+                }
+
+                div{
+                    h1{
+                        font-size: 2.986rem;
+                    }
+
+                    h2{
+                        font-size: 2.488rem;
+                        margin-top:1rem;
+                    }
+                    
+                    p{
+                        margin-top:1rem;
+                        font-size: 1rem;
+                    }
+
+                    form{
+                        input{
+                            width: 80px;
+                            background: #D9D9D9;
+                            border: 0px solid white;
+                            font-size: 2.074rem;
+                            padding : 5px;
+                            font-weight: bold;
+                        }
+
+                        button{
+                            width: 400px;
+                            background: #F17D25;
+                            border: 0px solid white;
+                            font-size: 2.074rem;
+                            color: black;
+                            font-weight: bold;
+                            padding: 5px;
+                            margin-left: 1rem;
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+
+
+            }
+
+
+            fieldset{
+                border: 1px solid black;
+                margin-left: 10%;
+                width: 50%;
+                padding: 20px;
+                font-size: 1rem;
+                margin-bottom: 50px;
+                
+
+                legend{
+                    margin-left: 50px;
+                    font-size: 2.488rem;
+                    font-family: "Poppins", sans-serif;
+                    font-weight: bold;
+                }
+            }
+        }
+
 
 }
 
@@ -263,13 +338,18 @@ body{
 
 
 footer{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     .container{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        // align-items: center;
-        background-color: black;
         padding: 20px;
+        width: 100%;
 
         .logoSlogan{
             display: flex;
@@ -294,8 +374,6 @@ footer{
 
 
         .NosCollections, .informations{
-            width: 25%;
-            // margin-top: 20px;
             h3{
                 color : white;
                 font-size: 2.074rem;

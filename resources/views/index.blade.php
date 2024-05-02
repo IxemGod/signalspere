@@ -25,7 +25,7 @@
                     <p><strong>{{ $article->name }}</strong></p>
                     <p class="prix">{{ $article->price }} €</p>
 
-                    <a href="#">Voir</a>
+                    <a href="/products/{{ $article->id }}">Voir</a>
                 </div>
                 @endforeach
             </div>
@@ -55,7 +55,7 @@
                     <p><strong>{{ $article->name }}</strong></p>
                     <p class="prix">{{ $article->price }} €</p>
 
-                    <a href="#">Voir</a>
+                    <a href="/products/{{ $article->id }}">Voir</a>
                 </div>
                 @endforeach
             </div>
@@ -63,4 +63,5 @@
         </div>
     </div>
 
+</body>
 @include("footer")

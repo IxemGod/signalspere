@@ -2,9 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\indexControllers;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [indexControllers::class, 'index']);
+
+
+
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

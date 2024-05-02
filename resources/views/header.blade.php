@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="http://127.0.0.1:8000/image/Favicon.png">
     <script src="https://kit.fontawesome.com/fcb8c34dd8.js" crossorigin="anonymous"></script>
 </head>
 
@@ -15,7 +16,7 @@
     </div>
 
     <nav class="deuxièmebeandeau">
-        <img src="image/logo.png">
+        <img src="http://127.0.0.1:8000/image/logo.png">
         <a href="/home">Accueil</a>
         <a href="#">Boutique</a>
         <a href="#">Code promo</a>

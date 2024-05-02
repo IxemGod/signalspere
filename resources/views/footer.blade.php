@@ -20,10 +20,11 @@
 </section>
 
 <footer>
-    <div class="container">
+    <h2>Salut</h2>
+    <div class="container"> 
 
         <div class="logoSlogan">
-            <img src="image/logo.png" alt="">
+            <img src="http://127.0.0.1:8000/image/logo.png" alt="">
             <p> SignalSphere, votre 
                 portail vers la communication
                 sans frontières !</p>
@@ -57,5 +58,5 @@
 
 
 
-    </div>
+     </div>
 </footer>
