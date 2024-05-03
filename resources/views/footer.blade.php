@@ -2,7 +2,7 @@
 
 <section class="prefooter">
     <div>
-    <i class="fa-solid fa-truck-fast"></i>
+        <i class="fa-solid fa-truck-fast"></i>
         <p>Livraison rapide</p>
     </div>
     <div>
@@ -21,11 +21,11 @@
 
 <footer>
     <h2>Salut</h2>
-    <div class="container"> 
+    <div class="container">
 
         <div class="logoSlogan">
             <img src="http://127.0.0.1:8000/image/logo.png" alt="">
-            <p> SignalSphere, votre 
+            <p> SignalSphere, votre
                 portail vers la communication
                 sans frontières !</p>
         </div>
@@ -49,14 +49,14 @@
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Mentions Légales</a></li>
                 <li><a href="#">Plan du site</a></li>
-                <li><a href="#">Politique de confidentialité</a></li>
+                <li><a href="/politique">Politique de confidentialité</a></li>
             </ul>
         </div>
 
 
-        
 
 
 
-     </div>
+
+    </div>
 </footer>

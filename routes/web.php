@@ -3,11 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\indexControllers;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BoutiqueController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [indexControllers::class, 'index']);
 
 
+Route::get('/boutique', [BoutiqueController::class, 'index'])->name('articles.index');
+Route::get('/boutique/filter', [BoutiqueController::class, 'index'])->name('articles.filter');
 
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 

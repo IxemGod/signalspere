@@ -18,8 +18,8 @@
         <a href="http://127.0.0.1:8000/">
             <img src="http://127.0.0.1:8000/image/logo.png">
         </a>
-        <a href="http://127.0.0.1:8000/">Accueil</a>
-        <a href="#">Boutique</a>
+        <a href="/">Accueil</a>
+        <a href="/boutique">Boutique</a>
         <a href="#">Code promo</a>
         <a href="/contact">Contact</a>
         <a href="#">A propos</a>
@@ -71,8 +71,8 @@
 
         <div class="overlay-menu" id="overlay-menu">
             <div class="overlay-content-menu">
-            <a href="http://127.0.0.1:8000/">Accueil</a>
-            <a href="#">Boutique</a>
+            <a href="/">Accueil</a>
+            <a href="/boutique">Boutique</a>
             <a href="#">Code promo</a>
             <a href="/contact">Contact</a>
             <a href="#">A propos</a>

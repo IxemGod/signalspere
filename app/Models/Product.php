@@ -11,4 +11,5 @@ class Product extends Model
 
     protected $fillable = ['id','name', 'price', 'description', 'pictures']; // Colonnes pouvant être remplies en masse
 
+    
 }
