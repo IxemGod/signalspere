@@ -22,7 +22,7 @@
         <a href="/boutique">Boutique</a>
         <a href="#">Code promo</a>
         <a href="/contact">Contact</a>
-        <a href="#">A propos</a>
+        <a href="/apropos">A propos</a>
 
         <div class="searchBar">
             <form>
@@ -75,7 +75,7 @@
             <a href="/boutique">Boutique</a>
             <a href="#">Code promo</a>
             <a href="/contact">Contact</a>
-            <a href="#">A propos</a>
+            <a href="/apropos">A propos</a>
             <p class="closeOverlayMenu"><i class="fa-solid fa-xmark"></i> Fermer</p>
             </div>
         </div>

@@ -1,5 +1,5 @@
 @include("header")
-
+<title>Boutique - SignalSphere</title>
 <section class="affichageArticleDansBoutique">
 
 {{ $articles->links() }}

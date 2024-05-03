@@ -18,6 +18,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/apropos', function () {
+    return view('apropos');
+});
+
 Route::get('/politique', function () {
     return view('confidentialite');
 });

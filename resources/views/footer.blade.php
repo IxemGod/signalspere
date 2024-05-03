@@ -48,7 +48,7 @@
                 <li><a href="#">Mon compte</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Mentions Légales</a></li>
-                <li><a href="#">Plan du site</a></li>
+                <li><a href="/apropos">A propos</a></li>
                 <li><a href="/politique">Politique de confidentialité</a></li>
             </ul>
         </div>
