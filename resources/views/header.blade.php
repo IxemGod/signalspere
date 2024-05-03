@@ -65,11 +65,49 @@
 
         <i class="fa-solid fa-bars"></i>
         
-        <div class="EspaceMembrePanier">       
+        <div class="PanierIconMenu">       
+        </div>
+
+
+        <div class="overlay-menu" id="overlay-menu">
+            <div class="overlay-content-menu">
+            <a href="http://127.0.0.1:8000/">Accueil</a>
+            <a href="#">Boutique</a>
+            <a href="#">Code promo</a>
+            <a href="/contact">Contact</a>
+            <a href="#">A propos</a>
+            <p class="closeOverlayMenu"><i class="fa-solid fa-xmark"></i> Fermer</p>
+            </div>
         </div>
 
 
     </div>
 </header>
 
+<script>
+    // Fonction pour basculer la visibilité du div cible
+    function OuvertureDuMenu() {
+        var targetDiv = document.getElementById("overlay-menu");
+            targetDiv.style.display = "block";
+    }
+
+    // Ajoute un gestionnaire d'événements à tous les éléments avec la classe "toggle"
+    var btnMenuOuverture = document.querySelectorAll('.fa-bars');
+    btnMenuOuverture.forEach(function(element) {
+        element.addEventListener('click', OuvertureDuMenu);
+    });
+
+
+    // Fonction pour basculer la visibilité du div cible
+    function FermetureDuMenu() {
+        var targetDiv = document.getElementById("overlay-menu");
+            targetDiv.style.display = "none";
+    }
+
+    // Ajoute un gestionnaire d'événements à tous les éléments avec la classe "toggle"
+    var btnMenufermeture = document.querySelectorAll('.closeOverlayMenu');
+    btnMenufermeture.forEach(function(element) {
+        element.addEventListener('click', FermetureDuMenu);
+    });
+</script>
 <body>

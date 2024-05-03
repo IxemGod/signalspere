@@ -139,9 +139,10 @@
             .fa-cart-shopping, .fa-bars{
                 font-size: 2.074rem;
                 color: black;
+                cursor: pointer;
             }
 
-            .EspaceMembrePanier{
+            .PanierIconMenu{
                 display: flex;
                 flex-direction: row;
                 gap: 10px;
@@ -150,6 +151,38 @@
                     color: black;
                 }
             }
+
+
+            .overlay-menu{
+                position: fixed;
+                display: none;
+                right: 0px;
+                left: 0px;
+                top: 0px;
+                bottom: 0px;
+                padding: 40%;
+                padding-top: 20%;
+                z-index: 3;
+                font-size: 2.74rem;
+                color: white;
+                font-weight: bold;
+                font-family: "Poppins", sans-serif;
+                background-color: #2a2e30ab;
+
+
+                .overlay-content-menu{
+                    width: 300px;
+                    display: flex;
+                    flex-direction: column;
+
+                    p{
+                        color: red;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+
         }
     }
 
