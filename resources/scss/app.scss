@@ -578,6 +578,34 @@ body{
         }
     }
 
+    .politiqueDeConfidentialité{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        div{
+            width: 50%;
+
+            h1{
+                text-align: center;
+                font-weight: bold;
+                font-size: 2.986rem;
+            }
+
+            h2{
+                margin-top: 20px;
+                font-size: 2.488rem;
+            }
+
+            ol{
+                li{
+                    margin-left: 40px;
+                }
+            }
+        }
+    }
+
 }
 
 .prefooter{

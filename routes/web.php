@@ -15,6 +15,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/politique', function () {
+    return view('confidentialite');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
