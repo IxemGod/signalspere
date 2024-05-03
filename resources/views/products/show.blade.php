@@ -20,7 +20,9 @@
 
     <fieldset>
         <legend>Description</legend>
-        <p>{{ $product->description }} </p>
+        <?php
+            echo "$product->description";
+        ?>
     </fieldset>
 </section>
     

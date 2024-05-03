@@ -9,14 +9,16 @@
     <script src="https://kit.fontawesome.com/fcb8c34dd8.js" crossorigin="anonymous"></script>
 </head>
 
-<header>
+<header class="headerOrdinateur">
     <div class="premierbandeau">
         <p>La livraison est OFFERTE dès 49€ d'achat, alors profitez-en !</p>
     </div>
 
     <nav class="deuxièmebeandeau">
-        <img src="http://127.0.0.1:8000/image/logo.png">
-        <a href="/">Accueil</a>
+        <a href="http://127.0.0.1:8000/">
+            <img src="http://127.0.0.1:8000/image/logo.png">
+        </a>
+        <a href="http://127.0.0.1:8000/">Accueil</a>
         <a href="#">Boutique</a>
         <a href="#">Code promo</a>
         <a href="/contact">Contact</a>
@@ -24,7 +26,7 @@
 
         <div class="searchBar">
             <form>
-                <input type="text">
+                <input type="text" placeholder="Rechercher un article">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
@@ -37,6 +39,37 @@
 
 
     </nav>
+</header>
+
+<header class="headerMobile">
+    <div class="premierbandeau">
+        <p>La livraison est OFFERTE dès 49€ d'achat, alors profitez-en !</p>
+    </div>
+
+    <div class="deuxièmebeandeau">
+
+        <div class="logo">
+            <a href="http://127.0.0.1:8000">
+                <img src="http://127.0.0.1:8000/image/logo.png">
+            </a>
+        </div>
+
+        <div class="searchBar">
+            <form>
+                <input type="text" placeholder="Rechercher un article ">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+        <i class="fa-solid fa-cart-shopping"></i>
+
+
+        <i class="fa-solid fa-bars"></i>
+        
+        <div class="EspaceMembrePanier">       
+        </div>
+
+
+    </div>
 </header>
 
 <body>
