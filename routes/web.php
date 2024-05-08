@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\indexControllers;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BoutiqueController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [indexControllers::class, 'index']);
@@ -13,6 +14,10 @@ Route::get('/boutique', [BoutiqueController::class, 'index'])->name('articles.in
 Route::get('/boutique/filter', [BoutiqueController::class, 'index'])->name('articles.filter');
 
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add')->middleware('web');
+
+// Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 
 Route::get('/contact', function () {
     return view('contact');

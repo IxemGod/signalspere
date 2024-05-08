@@ -110,4 +110,17 @@
         element.addEventListener('click', FermetureDuMenu);
     });
 </script>
+
+<div class="overlay-cart">
+    <div class="cart">
+        @foreach($panierFormat as $product)
+            <div class="product">
+                <p>{{ $product->name }}</p>
+            </div>
+        @endforeach
+    </div>
+    
+    
+</div>
+
 <body>

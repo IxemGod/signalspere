@@ -10,7 +10,7 @@ use App\Models\Product;
 
 class indexControllers extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $productsPlusVendu = Product::take(5)->get();
 
@@ -36,8 +36,21 @@ class indexControllers extends Controller
             }
         }
 
+        $cart = json_decode($request->cookie('cart'), true);
+
+        $panierFormat = array();
+
+        foreach($cart as $productId => $quantity)
+        {
+            $product = Product::find($productId);
+            array_push($panierFormat, $product);
+        }
+
+
+        // Afficher le contenu du panier
+        // return view('cart', ['cart' => $cart]);
 
         // Retourner la vue avec les données
-        return view('index', compact('productsPlusVendu', 'productsNouveuté'));
+        return view('index', compact('productsPlusVendu', 'productsNouveuté', 'panierFormat'));
     }
 }

@@ -10,8 +10,10 @@
     
             <p>{{ $product->name }}</p>
     
-            <form>
-                <input type="number" value="1">
+            <form action="{{ route('cart.add') }}" method="POST">
+                @csrf
+                <input type="hidden" name="product_id" value="1">
+                <input type="number" name="quantity" value="1" min="1"> 
                 <button>Ajouter au panier</button>
             </form>
         </div>

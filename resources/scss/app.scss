@@ -694,10 +694,11 @@ body {
         .container{
             display: flex;
             flex-direction: row;
-            width: 60%;
+            width: 70%;
             margin-top: 50px;
             margin-bottom: 50px;
-
+            // flex-wrap: wrap;
+            
             h1{
                 font-weight: bold;
                 font-size: 2.986rem;
@@ -709,12 +710,14 @@ body {
                 margin-bottom: 20px;
                 font-weight: bold;
                 font-weight: 1rem;
+                width: 90%;
             }
 
             img{
                 width: 100%;
                 border-radius: 100%;
                 height: 100%;
+                // padding: 10px;
             }
 
 
