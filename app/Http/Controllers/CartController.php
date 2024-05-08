@@ -24,8 +24,9 @@ class CartController extends Controller
         $cart[$productId] += $quantity;
 
         // Mettre à jour le cookie du panier
-        return response('Product added to cart')
-            ->cookie('cart', json_encode($cart), 60); // Durée du cookie en minutes
+        return redirect()->back()->withCookie(cookie('cart', json_encode($cart), 99960));
+
+
     }
 
     public function showCart(Request $request)

@@ -6,6 +6,92 @@
     font-style: normal;
 }
 
+.overlay-cart{
+    position: fixed;
+    z-index: 3;
+    right: 0px;
+    top:0px;
+    bottom: 0px;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+
+    h2{
+        margin: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    .cart{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        .product{
+            display: flex;
+            flex-direction: row;
+            gap:10px;
+    
+            .img{
+                width: 50px;
+            }
+    
+            .NameQuantitéPrix{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                
+                .QuantitéPrix{
+                    font-size: 14px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+            }
+    
+        }
+    }
+
+    .voirPanierCommander{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        .VoirPanier,.commander{
+            background-color:#f17d25;
+            width: 90%;
+            padding: 5px;
+            border: 1px solid #2a2e30;
+            border-radius: 10px;
+            text-align: center;
+            &:hover{
+                background-color: rgb(161, 161, 161);
+                border: #2a2e30 1px solid;
+            }
+        }
+
+        .commander{
+            background-color: #d9d9d9;
+        }
+    }
+   
+}
+
+.fontGris{
+    display: none;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left:0px;
+    right: 0px;
+    background-color: #2a2e3086;
+    z-index: 2;
+}
+
 @media (min-width: 1250px) {
     .headerMobile {
         display: none;

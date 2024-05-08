@@ -111,16 +111,71 @@
     });
 </script>
 
-<div class="overlay-cart">
+<div class="fontGris" id="fontGris"></div>
+
+<div class="overlay-cart" id="overlay-cart">
     <div class="cart">
+            <h2>Votre panier</h2>
         @foreach($panierFormat as $product)
             <div class="product">
-                <p>{{ $product->name }}</p>
-            </div>
+                <div class="img">
+                    <a href="/products/">
+                        <img src="https://www.gotechnique.com/{{ $product->pictures }}"> 
+                    </a>
+                </div>
+
+                <div class="NameQuantitéPrix">
+                    <div class="name">
+                        <p>{{ $product->name }}</p>
+                    </div>
+
+                    <div class="QuantitéPrix">
+                        <p>Qnté: {{ $product->quantity }}</p>
+                        <p>Prix: {{ $product->price }}</p>
+                    </div>
+                </div>
         @endforeach
+        </div>
+       
     </div>
     
     
+    <div class="voirPanierCommander">
+        <a class="VoirPanier" href="#">Voir le panier</a>
+        <a class="commander" href="#">Commander</a>
+    </div>
 </div>
+
+
+<script>
+    // Fonction pour basculer la visibilité du div cible
+    function OuvertureDuCart() {
+        var overlayDivCart = document.getElementById("overlay-cart");
+        var FontgrisDivCart = document.getElementById("fontGris");
+        overlayDivCart.style.display = "flex";
+        FontgrisDivCart.style.display = "block";
+    }
+
+    // Ajoute un gestionnaire d'événements à tous les éléments avec la classe "toggle"
+    var btnCartOuverture = document.querySelectorAll('.fa-cart-shopping');
+    btnCartOuverture.forEach(function(element) {
+        element.addEventListener('click', OuvertureDuCart);
+    });
+
+
+    // Fonction pour basculer la visibilité du div cible
+    function FermetureDuCart() {
+        var overlayDivCart = document.getElementById("overlay-cart");
+        var FontgrisDivCart = document.getElementById("fontGris");
+        overlayDivCart.style.display = "none";
+        FontgrisDivCart.style.display = "none";
+
+    }
+
+    // Ajoute un gestionnaire d'événements à tous les éléments avec la classe "toggle"
+    var btnCartfermeture = document.querySelectorAll('.fontGris');
+    btnCartfermeture.forEach(function(element) {
+        element.addEventListener('click', FermetureDuCart);
+    });</script>
 
 <body>
