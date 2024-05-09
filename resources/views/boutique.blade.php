@@ -36,7 +36,7 @@
         <div class="listeProduit">
             @foreach ($articles as $article)
             <div class="produit">
-                <img src="https://www.gotechnique.com/{{ $article->pictures }}" alt="" class="imgProduit">
+                <img src="image/product/{{ $article->pictures }}" alt="" class="imgProduit">
                 <p><strong>{{ $article->name }}</strong></p>
                 <p class="prix">{{ $article->price }} €</p>
 

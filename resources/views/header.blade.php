@@ -120,7 +120,7 @@
             <div class="product">
                 <div class="img">
                     <a href="/products/">
-                        <img src="https://www.gotechnique.com/{{ $product->pictures }}"> 
+                        <img src="image/product/{{ $product->pictures }}"> 
                     </a>
                 </div>
 

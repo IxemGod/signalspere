@@ -21,7 +21,7 @@
                 <h2>Les plus vendu</h2>
                 @foreach ($productsPlusVendu as $article)
                 <div class="produit">
-                    <img src="https://www.gotechnique.com/{{ $article->pictures }}" alt="">
+                    <img src="image/product/{{ $article->pictures }}" alt="">
                     <p><strong>{{ $article->name }}</strong></p>
                     <p class="prix">{{ $article->price }} €</p>
                     <a href="/products/{{ $article->id }}">Voir</a>
@@ -50,7 +50,7 @@
                 <h2>Nouveauté</h2>
                 @foreach ($productsNouveuté as $article)
                 <div class="produit">
-                    <img src="https://www.gotechnique.com/{{ $article->pictures }}" alt="" class="imgProduit">
+                    <img src="image/product/{{ $article->pictures }}" alt="" class="imgProduit">
                     <p><strong>{{ $article->name }}</strong></p>
                     <p class="prix">{{ $article->price }} €</p>
 
