@@ -1,18 +1,18 @@
 <!-- resources/views/products/show.blade.php -->
 @include("header")
-<title>{{ $product->name }} - SignalSphere</title>
+<title>{{ $productSolo->name }} - SignalSphere</title>
 <section class="DetailArticle">
     <div class="ImageTitreBtn">
-        <img src="https://www.gotechnique.com/{{ $product -> pictures }}" alt="{{ $product->name }}">
+        <img src="/image/product/{{ $productSolo -> pictures }}" alt="{{ $productSolo->name }}">
         <div>
-            <h1><strong>{{ $product->name }}</strong></h1>
-            <h2><b>{{ $product->price }} €</b> Net</h2>
+            <h1><strong>{{ $productSolo->name }}</strong></h1>
+            <h2><b>{{ $productSolo->price }} €</b> Net</h2>
     
-            <p>{{ $product->name }}</p>
+            <p>{{ $productSolo->name }}</p>
     
             <form action="{{ route('cart.add') }}" method="POST">
                 @csrf
-                <input type="hidden" name="product_id" value="1">
+                <input type="hidden" name="product_id" value="{{ $productSolo->id }}">
                 <input type="number" name="quantity" value="1" min="1"> 
                 <button>Ajouter au panier</button>
             </form>
@@ -23,7 +23,7 @@
     <fieldset>
         <legend>Description</legend>
         <?php
-            echo "$product->description";
+            echo "$productSolo->description";
         ?>
     </fieldset>
 </section>

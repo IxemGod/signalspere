@@ -2,7 +2,7 @@
 <title>Boutique - SignalSphere</title>
 <section class="affichageArticleDansBoutique">
 
-{{ $articles->links() }}
+
 
 
     <div class="container">
@@ -24,11 +24,10 @@
             <div class="separation"></div>
 
             <ul>
-                <li><a href="#"> KENWOOD</a></li>
-                <li><a href="#"> BAOFENG</a></li>
-                <li><a href="#"> MOTOROLLA</a></li>
-                <li><a href="#"> PRESIDENT</a></li>
-                <li><a href="#"> YAESEU</a></li>
+                @foreach($ListeCategoryUnique as $cateogy)
+                    <li><a href="/boutique/filter?category={{$cateogy}}"> {{$cateogy}}</a></li>
+                @endforeach
+
             </ul>
 
         </div>
@@ -36,7 +35,7 @@
         <div class="listeProduit">
             @foreach ($articles as $article)
             <div class="produit">
-                <img src="image/product/{{ $article->pictures }}" alt="" class="imgProduit">
+                <img src="/image/product/{{ $article->pictures }}" alt="" class="imgProduit">
                 <p><strong>{{ $article->name }}</strong></p>
                 <p class="prix">{{ $article->price }} €</p>
 
@@ -46,7 +45,7 @@
         </div>
     </div>
 
-    {{ $articles->links() }}
+
 </section>
 
 

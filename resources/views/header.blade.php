@@ -134,8 +134,8 @@
                         <p>Prix: {{ $product->price }}</p>
                     </div>
                 </div>
-        @endforeach
-        </div>
+            </div>
+            @endforeach
        
     </div>
     
