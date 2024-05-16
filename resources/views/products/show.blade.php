@@ -29,5 +29,5 @@
 </section>
     
 
-
+<!-- d -->
 @include("footer")
