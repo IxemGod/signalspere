@@ -33,11 +33,11 @@
         <div class="NosCollections">
             <h3>Nos collections</h3>
             <ul>
-                <li><a href="#">KENWOOD</a></li>
-                <li><a href="#">BAOFENG</a></li>
-                <li><a href="#">MOTOROLLA</a></li>
-                <li><a href="#">PRESIDENT</a></li>
-                <li><a href="#">YAESEU</a></li>
+                <li><a href="/boutique/filter?category=KENWOOD">KENWOOD</a></li>
+                <li><a href="/boutique/filter?category=ACCESSOIRE">ACCESSOIRE</a></li>
+                <li><a href="/boutique/filter?category=MOTOROLA">MOTOROLA</a></li>
+                <li><a href="/boutique/filter?category=PRESIDENT">PRESIDENT</a></li>
+                <li><a href="/boutique/filter?category=YAESU">YAESU</a></li>
             </ul>
         </div>
 
@@ -45,7 +45,7 @@
         <div class="informations">
             <h3>Informations</h3>
             <ul>
-                <li><a href="#">Mon compte</a></li>
+                <li><a href="/dashboard">Mon compte</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Mentions Légales</a></li>
                 <li><a href="/apropos">A propos</a></li>

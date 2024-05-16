@@ -5,6 +5,7 @@ use App\Http\Controllers\indexControllers;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BoutiqueController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [indexControllers::class, 'index']);
@@ -19,13 +20,9 @@ Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.ad
 
 // Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/contact', [ViewController::class, 'contact']);
+Route::get('/apropos', [ViewController::class, 'apropos']);
 
-Route::get('/apropos', function () {
-    return view('apropos');
-});
 
 Route::get('/politique', function () {
     return view('confidentialite');

@@ -28,8 +28,6 @@ class BoutiqueController extends Controller
             }
         }
 
-        // dd($listeArticleCategoryReq);
-
 
 
         // Filter by minimum price
