@@ -16,7 +16,7 @@
 
     <nav class="deuxièmebeandeau">
         <a href="http://127.0.0.1:8000/">
-            <img src="http://127.0.0.1:8000/image/logo.png">
+            <img src="/image/logo.png">
         </a>
         <a href="/">Accueil</a>
         <a href="/boutique">Boutique</a>
@@ -50,7 +50,7 @@
 
         <div class="logo">
             <a href="http://127.0.0.1:8000">
-                <img src="http://127.0.0.1:8000/image/logo.png">
+                <img src="/image/logo.png">
             </a>
         </div>
 
@@ -120,7 +120,7 @@
             <div class="product">
                 <div class="img">
                     <a href="/products/">
-                        <img src="image/product/{{ $product->pictures }}"> 
+                        <img src="/image/product/{{ $product->pictures }}"> 
                     </a>
                 </div>
 

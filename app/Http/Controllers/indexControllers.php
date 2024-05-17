@@ -16,7 +16,7 @@ class indexControllers extends Controller
 
         // $productsNouveuté = Product::inRandomOrder()->take(5)->get();
 
-        $categoryId = "new"; // Remplacez 1 par l'ID de la catégorie spécifique que vous recherchez
+        $categoryId = "icom"; // Remplacez 1 par l'ID de la catégorie spécifique que vous recherchez
 
         $productsNouveuté = DB::table('products')
             ->join('category', 'products.id', '=', 'category.id_products')
