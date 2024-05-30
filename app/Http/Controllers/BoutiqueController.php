@@ -13,11 +13,10 @@ class BoutiqueController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Product::all();
-        
+        $query = Product::query();
         $queryCat = Category::all();
         $listeArticleCategoryReq = array();
-
+        
         if (request()->has('category')) {
     
             foreach($queryCat as $categoryCurrent)
@@ -27,6 +26,9 @@ class BoutiqueController extends Controller
                     $listeArticleCategoryReq[] = Product::find($categoryCurrent->id_products);
                 }
             }
+        }
+        else{
+            $listeArticleCategoryReq = Product::all();
         }
 
 
@@ -101,7 +103,6 @@ class BoutiqueController extends Controller
             // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
             $panierFormat = [];
         }
-
         return view('boutique', compact('articles' ,'ListeCategoryUnique','panierFormat'));
     }
 }
