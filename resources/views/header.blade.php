@@ -32,8 +32,8 @@
         </div>
 
         <div class="EspaceMembrePanier">       
-            <i class="fa-solid fa-user"></i>
-            <i class="fa-solid fa-cart-shopping"></i>
+        <a href="/dashboard"><i class="fa-solid fa-user"></i></a>
+            <i class="fa-solid fa-cart-shopping" style="cursor: pointer;"></i>
         </div>
 
 

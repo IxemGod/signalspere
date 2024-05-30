@@ -9,7 +9,7 @@ class Product extends Model
 {
     protected $table = 'products'; // Nom de la table dans la base de données
 
-    protected $fillable = ['id','name', 'price', 'description', 'pictures']; // Colonnes pouvant être remplies en masse
+    protected $fillable = ['id','name', 'price', 'description', 'pictures',"updated_at"]; // Colonnes pouvant être remplies en masse
 
     
 }
