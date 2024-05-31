@@ -52,6 +52,10 @@ Route::post('/admin/product/modification' ,[App\Http\Controllers\AdminController
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
+Route::get('/listeUser' ,[App\Http\Controllers\AdminController::class, 'indexUsers'])
+->middleware(['auth', 'verified'])
+->name('dashboard');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
