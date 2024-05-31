@@ -282,6 +282,53 @@
 body {
     overflow-x: hidden;
 
+    .error{
+        color: red;
+        text-align: center;
+        font-size: 2.986rem;
+        font-weight: bold;
+        margin-bottom: 250px;
+        margin-top: 250px;
+    }
+
+    .success{
+        color: green;
+        text-align: center;
+        font-size: 2.986rem;
+        margin-bottom: 250px;
+        margin-top: 250px;
+    }
+
+
+    .formulaireAdminModifProduct{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        form{
+
+            p{
+                margin: 15px;
+                input{
+                    border: 1px solid black;
+                }
+            }
+
+            button{
+                background-color: #f17d25;
+                padding: 10px;
+                width: 200px;
+                color: white;
+                font-weight: bold;
+                margin: 20px;
+            }
+
+        }
+
+    }
+
     .section1Index {
         position: relative;
         left: 0px;
@@ -941,6 +988,40 @@ body {
             }
         }
     }
+
+    .formulairecommander{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+
+            h1{
+                font-size: 2.986rem;
+                font-weight: bold;
+            }
+
+
+            form{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-bottom: 20px;
+
+                button{
+                    background-color: #f17d25;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    
 }
 
 .prefooter {

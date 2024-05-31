@@ -1,5 +1,5 @@
 @include("header");
-
+<title>Tableau de bord</title>
 <section class="sectionAdministrateur">
 
     <div class="container">

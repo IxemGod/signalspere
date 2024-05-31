@@ -9,6 +9,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CommanderController;
 use App\Http\Controllers\PanierController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,15 @@ Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.ad
 
 
 Route::post('/cart/delete/{id}', [CartController::class, 'deleteToCart']);
+
+
+Route::get('/commander', [CommanderController::class, 'show']);
+Route::post('/commander/validate', [CommanderController::class, 'validate']);
+
+
+Route::get('/response', function () {
+    return view('response');
+})->name('response');
 
 // Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 

@@ -102,7 +102,7 @@ class AdminController extends Controller
             return view('dashboard');
         }
         else{
-            $product = Product::find($id);
+            $productShow = Product::find($id);
             $cart = $request->cookie('cart');
 
             $panierFormat = [];
@@ -126,7 +126,7 @@ class AdminController extends Controller
                 // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
                 $panierFormat = [];
             }
-            return view('admin.editProduct', compact('product', 'panierFormat'));
+            return view('admin.editProduct', compact('productShow', 'panierFormat'));
         }
     }
     public function confirmModifProduct(Request $request)
@@ -144,16 +144,18 @@ class AdminController extends Controller
             ]);
             
             // Trouver le produit par son ID
-            $product = Product::findOrFail($request->idProduct);
+            $productShow = Product::findOrFail($request->idProduct);
     
             // Mettre à jour les informations du produit
-            $product->name = $request->input('name');
-            $product->price = $request->input('price');
-            $product->description = $request->input('description');
+            $productShow->name = $request->input('name');
+            $productShow->price = $request->input('price');
+            $productShow->description = $request->input('description');
             // Mettre à jour d'autres champs si nécessaire
             
             // Sauvegarder les modifications
-            $product->save();
+            $productShow->save();
+
+            $productShow = Product::find($request->idProduct);
 
 
 
@@ -180,7 +182,7 @@ class AdminController extends Controller
                 // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
                 $panierFormat = [];
             }
-            return view('admin.editProduct', compact('product', 'panierFormat'));
+            return view('admin.editProduct', compact('productShow', 'panierFormat'));
         }
     }
 

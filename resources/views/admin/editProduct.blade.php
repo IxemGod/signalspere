@@ -1,15 +1,22 @@
-<form action="modification" method="POST">
-    @csrf
-    <img src="/image/product/{{ $product->pictures}}" width="200px"><br>
-    <label>Titre</label>
-    <input type="text" name="name" value="{{$product->name}}"><br>
-    <label>Prix</label>
-    <input type="float" name="price" value="{{$product->price}}"><br>
-    <input type="hidden" name="idProduct" value="{{$product->id}}€"><br>
+@include("header");
+<title>Edtion du produit</title>
+<section class="formulaireAdminModifProduct">
+    <form action="modification" method="POST" >
+        @csrf
+        <img src="/image/product/{{ $productShow->pictures}}" width="200px">
+        <p><label>Titre</label>
+        <input type="text" name="name" value="{{$productShow->name}}"></p>
+        <p><label>Prix</label>
+        <input type="float" name="price" value="{{$productShow->price}}"></p>
+        <input type="hidden" name="idProduct" value="{{$productShow->id}}">
+    
+        <textarea style="width:500px; height:200px;"  name="description">
+            {{$productShow->description}}
+        </textarea><br>
+    
+        <button>Modifier</button>
+    </form>
 
-    <textarea style="width:500px; height:200px;"  name="description">
-        {{$product->description}}
-    </textarea><br>
+</section>
+@include("footer");
 
-    <button>Modifier</button>
-</form>
