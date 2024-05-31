@@ -76,6 +76,7 @@
             <a href="#">Code promo</a>
             <a href="/contact">Contact</a>
             <a href="/apropos">A propos</a>
+            <a href="/dashboard">Espace Membre</a>
             <p class="closeOverlayMenu"><i class="fa-solid fa-xmark"></i> Fermer</p>
             </div>
         </div>
