@@ -198,10 +198,11 @@ class AdminController extends Controller
             return view('dashboard');
         }
         else{
-            $listUsers = User::paginate(60);
+            $listUsers = User::all();
 
             dd($listUsers);
-
+            
+            
 
 
             $cart = $request->cookie('cart');

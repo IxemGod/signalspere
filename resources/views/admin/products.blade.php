@@ -1,6 +1,6 @@
 @include("header");
 
-
+<title>Listes des produits</title>
 
 <section class="sectionAdministateurListeProduit">
     

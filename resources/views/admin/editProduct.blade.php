@@ -16,7 +16,6 @@
     
         <button>Modifier</button>
     </form>
-
 </section>
 @include("footer");
 

@@ -13,8 +13,8 @@ return new class extends Migration
             $table->string('street', 150);
             $table->integer('postalcode')->length(11);
             $table->string('city', 150);
-            $table->unsignedBigInteger('id_users');
-            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('id_commande');
+            $table->foreign('id_commande')->references('id')->on('commandes')->onDelete('cascade');
             $table->timestamps();
         });
     }

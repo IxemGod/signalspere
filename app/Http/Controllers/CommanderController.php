@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\PromoCode;
 use App\Models\Commande;
+use App\Models\Adresse;
 use App\Models\ProductCommande;
 
 
@@ -52,7 +53,7 @@ class CommanderController extends Controller
 
     public function validate(Request $request)
     {    
-        try {
+        // try {
             $cart = $request->cookie('cart');
 
                 $panierFormat = [];
@@ -93,6 +94,7 @@ class CommanderController extends Controller
                     'city' => 'required|string|max:150',
                     'email' => 'required|string|email|max:255',
                 ]);
+
                 
                 // Vérification de l'existence et du calcul de la réduction du code promo
                 $reduction = 0;
@@ -133,16 +135,24 @@ class CommanderController extends Controller
                     }
                 }
 
+                $adresse = new Adresse();
+                $adresse->id_commande = $commande->id;
+                $adresse->street = $request->input('street');
+                $adresse->postalcode = $request->input('postalcode');
+                $adresse->city = $request->input('city');
+                $adresse->save();
+                
+
                 $message = "Commande validée avec succès !";
                 $code = "success";
             
             // En cas de succès, rediriger vers la vue response avec un message
             return view('response', compact('panierFormat','code','message'));
-        } catch (\Exception $e) {
-            $message = "Quelque chose s'est mal passé";
-            $code = "error";
-            // En cas d'erreur, rediriger vers la page précédente avec un message d'erreur
-            return view('response', compact('panierFormat','code','message'));
-        }
+        // } catch (\Exception $e) {
+        //     $message = "Quelque chose s'est mal passé";
+        //     $code = "error";
+        //     // En cas d'erreur, rediriger vers la page précédente avec un message d'erreur
+        //     return view('response', compact('panierFormat','code','message'));
+        // }
     }
 }
