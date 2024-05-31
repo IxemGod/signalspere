@@ -9,6 +9,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PanierController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [indexControllers::class, 'index']);
@@ -16,11 +17,19 @@ Route::get('/', [indexControllers::class, 'index']);
 
 
 Route::get('/boutique', [BoutiqueController::class, 'index'])->name('articles.index');
+
+
+Route::get('/panier', [PanierController::class, 'index'])->name('articles.index');
+
+
 Route::get('/boutique/filter', [BoutiqueController::class, 'index'])->name('articles.filter');
 
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add')->middleware('web');
+
+
+Route::post('/cart/delete/{id}', [CartController::class, 'deleteToCart']);
 
 // Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 

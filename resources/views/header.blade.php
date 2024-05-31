@@ -119,7 +119,7 @@
         @foreach($panierFormat as $product)
             <div class="product">
                 <div class="img">
-                    <a href="/products/">
+                    <a href="/products/{{ $product->id }}">
                         <img src="/image/product/{{ $product->pictures }}"> 
                     </a>
                 </div>
@@ -141,8 +141,8 @@
     
     
     <div class="voirPanierCommander">
-        <a class="VoirPanier" href="#">Voir le panier</a>
-        <a class="commander" href="#">Commander</a>
+        <a class="VoirPanier" href="/panier">Voir le panier</a>
+        <a class="commander" href="/commander">Commander</a>
     </div>
 </div>
 

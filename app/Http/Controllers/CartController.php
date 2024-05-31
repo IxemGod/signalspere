@@ -61,4 +61,23 @@ class CartController extends Controller
         // Afficher le contenu du panier
         return view('cart', ['cart' => $cart, 'panierFormat' => $panierFormat]);
     }
+
+    public function deleteToCart($id,Request $request)
+    {
+
+        
+        // Récupérer les données de la requête
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity', 1); // Quantité par défaut est 1
+        
+        // Récupérer le panier actuel depuis les cookies
+        $cart = json_decode($request->cookie('cart'), true);
+        unset($cart[$id]);
+        // Mettre à jour le cookie du panier
+        return redirect()->back()->withCookie(cookie('cart', json_encode($cart), 99960));
+
+
+    }
+
 }
+
