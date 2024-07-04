@@ -10,7 +10,7 @@ use App\Models\Commande;
 use App\Models\Adresse;
 use App\Models\ProductCommande;
 
-
+ 
 class CommanderController extends Controller
 {
     public function show(Request $request)

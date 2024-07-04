@@ -8,8 +8,12 @@
         <div class="listeOption">
             <p>Que voulez-vous faire ?</p>
                 <ul>
-                    <li><a href="listeUser">Géré les comptes utilisateurs</a></li>
-                    <li><a href="listeProducts">Géré les produits</a></li>
+                    <li><a href="admin/listeUser">Géré les comptes utilisateurs</a></li>
+                    <li><a href="admin/listeProducts">Géré les produits</a></li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit">Déconnexion</button>
+                    </form>
 
                 </ul>
         </div>

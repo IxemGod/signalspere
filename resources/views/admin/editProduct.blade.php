@@ -1,7 +1,7 @@
 @include("header");
 <title>Edtion du produit</title>
 <section class="formulaireAdminModifProduct">
-    <form action="modification" method="POST" >
+    <form action="modificationProduct" method="POST" >
         @csrf
         <img src="/image/product/{{ $productShow->pictures}}" width="200px">
         <p><label>Titre</label>

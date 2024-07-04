@@ -16,7 +16,7 @@ class AdminController extends Controller
 
         $user = Auth::user();
 
-        if($user->usertype == "user")
+        if($user->usertype == "user" or $user->state != "true")
         {
             return view('dashboard');
         }
@@ -58,7 +58,7 @@ class AdminController extends Controller
 
         $user = Auth::user();
 
-        if($user->usertype == "user")
+        if($user->usertype == "user" or $user->state != "true")
         {
             return view('dashboard');
         }
@@ -97,7 +97,7 @@ class AdminController extends Controller
     public function editProduct($id, Request $request)
     {
         $user = Auth::user();
-        if($user->usertype == "user")
+        if($user->usertype == "user" or $user->state != "true")
         {
             return view('dashboard');
         }
@@ -132,7 +132,7 @@ class AdminController extends Controller
     public function confirmModifProduct(Request $request)
     {
         $user = Auth::user();
-        if($user->usertype == "user")
+        if($user->usertype == "user" or $user->state != "true")
         {
             return view('dashboard');
         }
@@ -186,23 +186,20 @@ class AdminController extends Controller
         }
     }
 
-
-
     public function indexUsers(Request $request)
     {
 
         $user = Auth::user();
 
-        if($user->usertype == "user")
+        if($user->usertype == "user" or $user->state != "true" or $user->state != "true")
         {
             return view('dashboard');
         }
         else{
-            $listUsers = User::all();
 
-            dd($listUsers);
-            
-            
+            $listUsers = User::where('id', '!=', $user->id)->get();
+
+
 
 
             $cart = $request->cookie('cart');
@@ -232,71 +229,34 @@ class AdminController extends Controller
         }
     }
 
-    public function editUser($id, Request $request)
+    public function modifState(Request $request)
     {
         $user = Auth::user();
-        if($user->usertype == "user")
+
+        if($user->usertype == "user" or $user->state != "true")
         {
             return view('dashboard');
         }
         else{
-            $product = Product::find($id);
-            $cart = $request->cookie('cart');
 
-            $panierFormat = [];
-
-            // Vérifier si le cookie existe
-            if ($cart !== null) {
-                $cart = json_decode($cart, true);
-
-                foreach($cart as $productId => $quantity)
-                {
-                    $product = Product::find($productId);
-                    if ($product) {
-                        // Exemple d'utilisation correcte de setAttribute()
-                        $product->setAttribute('quantity', $quantity);
-                        $product->setAttribute('total_price', $quantity * $product->price);
-
-                        array_push($panierFormat, $product); 
-                    }
-                }
-            } else {
-                // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
-                $panierFormat = [];
+            if($request->state == "true"){
+                $stateChage = "false";
             }
-            return view('admin.editUser', compact('product', 'panierFormat'));
-        }
-    }
-    public function confirmModifUser(Request $request)
-    {
-        $user = Auth::user();
-        if($user->usertype == "user")
-        {
-            return view('dashboard');
-        }
-        else{
+            else{
+                $stateChage = "true";
+            }
             $request->validate([
-                'name' => 'required|string|max:255',
-                'description' => 'required|string',
+                'state' => 'required|string|max:11'
                 // Ajoutez d'autres règles de validation si nécessaire
             ]);
-            
-            // Trouver le produit par son ID
-            $product = Product::findOrFail($request->idProduct);
-    
-            // Mettre à jour les informations du produit
-            $product->name = $request->input('name');
-            $product->price = $request->input('price');
-            $product->description = $request->input('description');
-            // Mettre à jour d'autres champs si nécessaire
-            
+            // Trouver l'utilisateur par son ID
+            $user = User::findOrFail($request->id);
+            // Mettre à jour les informations de l'utilisateur
+            $user->state = $stateChage;
             // Sauvegarder les modifications
-            $product->save();
-
-
-
+            $user->save();
+            $listUsers = User::all();
             $cart = $request->cookie('cart');
-
             $panierFormat = [];
 
             // Vérifier si le cookie existe
@@ -318,7 +278,7 @@ class AdminController extends Controller
                 // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
                 $panierFormat = [];
             }
-            return view('admin.editUser', compact('product', 'panierFormat'));
+            return view('admin.users', compact('listUsers', 'panierFormat'));
         }
-    }
+    }   
 }

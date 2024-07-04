@@ -45,7 +45,7 @@ Route::get('/response', function () {
 
 Route::get('/contact', [ViewController::class, 'contact']);
 Route::get('/apropos', [ViewController::class, 'apropos']);
-
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/politique', function () {
     return view('confidentialite');
@@ -59,7 +59,7 @@ Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('/listeProducts', [App\Http\Controllers\AdminController::class, 'indexProducts'])
+Route::get('admin/listeProducts', [App\Http\Controllers\AdminController::class, 'indexProducts'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
@@ -67,11 +67,16 @@ Route::get('/admin/product/{id}', [App\Http\Controllers\AdminController::class, 
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
-Route::post('/admin/product/modification' ,[App\Http\Controllers\AdminController::class, 'confirmModifProduct'])
+Route::post('/admin/product/modificationProduct' ,[App\Http\Controllers\AdminController::class, 'confirmModifProduct'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
-Route::get('/listeUser' ,[App\Http\Controllers\AdminController::class, 'indexUsers'])
+Route::post('/admin/listeUser/modifstate' ,[App\Http\Controllers\AdminController::class, 'modifState'])
+->middleware(['auth', 'verified'])
+->name('dashboard');
+
+
+Route::get('/admin/listeUser' ,[App\Http\Controllers\AdminController::class, 'indexUsers'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 

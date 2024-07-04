@@ -19,7 +19,7 @@
                     <p>{{$product->price}}€</p>
                 </div>
 
-                <button><a href="admin/product/{{$product->id}}">Modifier</a></button>
+                <button><a href="/admin/product/{{$product->id}}">Modifier</a></button>
             </div>
 
             @endforeach
