@@ -12,6 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->use([
+            \App\Http\Middleware\Cart::class,
+        ]);
+   })
+    ->withMiddleware(function (Middleware $middleware) {
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
@@ -20,3 +25,5 @@ return Application::configure(basePath: dirname(__DIR__))
     // ->withMiddleware(function (Middleware $middleware) {
     //     $middleware->append(IsAdmin::class);
     // });
+
+    

@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\PromoCode;
+use App\Models\User;
 use App\Models\Commande;
 use App\Models\Adresse;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use App\Models\ProductCommande;
 
  
@@ -117,9 +120,33 @@ class CommanderController extends Controller
                     // Si un utilisateur est authentifié, enregistrer son ID
                     $commande->id_user = auth()->user()->id;
                 } else {
-                    // Si aucun utilisateur n'est authentifié, insérer null
-                    $commande->id_user = null;
+                    $userTest = User::where('email', $request->email)->first();
+
+                    if ($userTest) {
+                        // Gérer le cas où l'utilisateur existe déjà (par exemple, retourner une erreur)
+                        $message =  "L'utilisateur avec l'adresse e-mail $request->email existe déjà.";
+                        $code = "error";
+                        return view('response', compact('panierFormat','code','message'));
+                    } else {
+                        // Si aucun utilisateur n'est authentifié, insérer null
+                    $user = new User();
+                    $user->name = $request->name;
+                    $user->email = $request->email;
+                    // Générer un mot de passe aléatoire
+                    $psw = Str::random(12);
+                    // Hasher le mot de passe
+                    $hashedPassword = Hash::make($psw);
+                    // Stocker le mot de passe hashé dans l'utilisateur
+                    $user->password = $hashedPassword;
+                    $user->role_id = 2;
+                    $user->state = "true";
+                    // Enregistrer l'utilisateur
+                    $user->save();
+                    // Récupérer l'ID de l'utilisateur créé
+                    $userId = $user->id;
+                    $commande->id_user = $user->id;
                 }
+            }
 
                 $commande->save();
                 

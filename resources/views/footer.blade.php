@@ -52,11 +52,5 @@
                 <li><a href="/politique">Politique de confidentialité</a></li>
             </ul>
         </div>
-
-
-
-
-
-
     </div>
 </footer>

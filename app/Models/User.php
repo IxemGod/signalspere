@@ -22,6 +22,8 @@ class User extends Authenticatable
         'password'
     ];
 
+    public $incrementing = true;
+
     /**
      * The attributes that should be hidden for serialization.
      *

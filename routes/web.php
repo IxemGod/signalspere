@@ -5,7 +5,6 @@ use App\Http\Controllers\indexControllers;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BoutiqueController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\ViewController;
 use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Auth\LoginController;
@@ -13,19 +12,22 @@ use App\Http\Controllers\CommanderController;
 use App\Http\Controllers\PanierController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [indexControllers::class, 'index']);
+
+use App\Http\Middleware\Cart;
+
+Route::get('/', [indexControllers::class, 'index'])->middleware(Cart::class);
 
 
 
-Route::get('/boutique', [BoutiqueController::class, 'index'])->name('articles.index');
+Route::get('/boutique', [BoutiqueController::class, 'index'])->name('articles.index')->middleware(Cart::class);
 
 
-Route::get('/panier', [PanierController::class, 'index'])->name('articles.index');
+Route::get('/panier', [PanierController::class, 'index'])->name('articles.index')->middleware(Cart::class);
 
 
-Route::get('/boutique/filter', [BoutiqueController::class, 'index'])->name('articles.filter');
+Route::get('/boutique/filter', [BoutiqueController::class, 'index'])->name('articles.filter')->middleware(Cart::class);
 
-Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show')->middleware(Cart::class);
 
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add')->middleware('web');
 
@@ -33,7 +35,7 @@ Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.ad
 Route::post('/cart/delete/{id}', [CartController::class, 'deleteToCart']);
 
 
-Route::get('/commander', [CommanderController::class, 'show']);
+Route::get('/commander', [CommanderController::class, 'show'])->middleware(Cart::class);
 Route::post('/commander/validate', [CommanderController::class, 'validate']);
 
 
@@ -41,15 +43,33 @@ Route::get('/response', function () {
     return view('response');
 })->name('response');
 
-// Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 
-Route::get('/contact', [ViewController::class, 'contact']);
-Route::get('/apropos', [ViewController::class, 'apropos']);
+Route::get('/contact', function () {
+    // Récupérer la variable ajoutée par le middleware
+    $panierFormat = request()->panierFormat;
+
+    // Retourner la vue en passant la variable
+    return view('contact', compact('panierFormat'));
+})->middleware(Cart::class);
+
+Route::get('/apropos', function () {
+    // Récupérer la variable ajoutée par le middleware
+    $panierFormat = request()->panierFormat;
+
+    // Retourner la vue en passant la variable
+    return view('apropos', compact('panierFormat'));
+})->middleware(Cart::class);
+
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
+
 Route::get('/politique', function () {
-    return view('confidentialite');
-});
+    // Récupérer la variable ajoutée par le middleware
+    $panierFormat = request()->panierFormat;
+
+    // Retourner la vue en passant la variable
+    return view('confidentialite', compact('panierFormat'));
+})->middleware(Cart::class);
 
 Route::get('/welcome', function () {
     return view('welcome');

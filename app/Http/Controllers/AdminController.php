@@ -21,31 +21,7 @@ class AdminController extends Controller
             return view('dashboard');
         }
         else{
-            $cart = $request->cookie('cart');
-
-            $panierFormat = [];
-
-            // Vérifier si le cookie existe
-            if ($cart !== null) {
-                $cart = json_decode($cart, true);
-
-                foreach($cart as $productId => $quantity)
-                {
-                    $product = Product::find($productId);
-                    if ($product) {
-                        // Exemple d'utilisation correcte de setAttribute()
-                        $product->setAttribute('quantity', $quantity);
-                        $product->setAttribute('total_price', $quantity * $product->price);
-
-                        array_push($panierFormat, $product);
-                    }
-                }
-            } else {
-                // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
-                $panierFormat = [];
-            }
-
-
+            $panierFormat = $request->panierFormat;
             return view('admin.dashboard', compact("panierFormat"));
         }
 
@@ -64,32 +40,7 @@ class AdminController extends Controller
         }
         else{
             $listProduits = Product::paginate(60);
-
-
-
-            $cart = $request->cookie('cart');
-
-            $panierFormat = [];
-
-            // Vérifier si le cookie existe
-            if ($cart !== null) {
-                $cart = json_decode($cart, true);
-
-                foreach($cart as $productId => $quantity)
-                {
-                    $product = Product::find($productId);
-                    if ($product) {
-                        // Exemple d'utilisation correcte de setAttribute()
-                        $product->setAttribute('quantity', $quantity);
-                        $product->setAttribute('total_price', $quantity * $product->price);
-
-                        array_push($panierFormat, $product); 
-                    }
-                }
-            } else {
-                // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
-                $panierFormat = [];
-            }
+            $panierFormat = $request->panierFormat;
             return view('admin.products', compact('listProduits', 'panierFormat'));
         }
     }
@@ -103,29 +54,7 @@ class AdminController extends Controller
         }
         else{
             $productShow = Product::find($id);
-            $cart = $request->cookie('cart');
-
-            $panierFormat = [];
-
-            // Vérifier si le cookie existe
-            if ($cart !== null) {
-                $cart = json_decode($cart, true);
-
-                foreach($cart as $productId => $quantity)
-                {
-                    $product = Product::find($productId);
-                    if ($product) {
-                        // Exemple d'utilisation correcte de setAttribute()
-                        $product->setAttribute('quantity', $quantity);
-                        $product->setAttribute('total_price', $quantity * $product->price);
-
-                        array_push($panierFormat, $product); 
-                    }
-                }
-            } else {
-                // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
-                $panierFormat = [];
-            }
+            $panierFormat = $request->panierFormat;
             return view('admin.editProduct', compact('productShow', 'panierFormat'));
         }
     }
@@ -159,29 +88,7 @@ class AdminController extends Controller
 
 
 
-            $cart = $request->cookie('cart');
-
-            $panierFormat = [];
-
-            // Vérifier si le cookie existe
-            if ($cart !== null) {
-                $cart = json_decode($cart, true);
-
-                foreach($cart as $productId => $quantity)
-                {
-                    $product = Product::find($productId);
-                    if ($product) {
-                        // Exemple d'utilisation correcte de setAttribute()
-                        $product->setAttribute('quantity', $quantity);
-                        $product->setAttribute('total_price', $quantity * $product->price);
-
-                        array_push($panierFormat, $product); 
-                    }
-                }
-            } else {
-                // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
-                $panierFormat = [];
-            }
+            $panierFormat = $request->panierFormat;
             return view('admin.editProduct', compact('productShow', 'panierFormat'));
         }
     }
@@ -198,33 +105,7 @@ class AdminController extends Controller
         else{
 
             $listUsers = User::where('id', '!=', $user->id)->get();
-
-
-
-
-            $cart = $request->cookie('cart');
-
-            $panierFormat = [];
-
-            // Vérifier si le cookie existe
-            if ($cart !== null) {
-                $cart = json_decode($cart, true);
-
-                foreach($cart as $productId => $quantity)
-                {
-                    $product = Product::find($productId);
-                    if ($product) {
-                        // Exemple d'utilisation correcte de setAttribute()
-                        $product->setAttribute('quantity', $quantity);
-                        $product->setAttribute('total_price', $quantity * $product->price);
-
-                        array_push($panierFormat, $product); 
-                    }
-                }
-            } else {
-                // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
-                $panierFormat = [];
-            }
+            $panierFormat = $request->panierFormat;
             return view('admin.users', compact('listUsers', 'panierFormat'));
         }
     }
@@ -255,29 +136,10 @@ class AdminController extends Controller
             $user->state = $stateChage;
             // Sauvegarder les modifications
             $user->save();
-            $listUsers = User::all();
-            $cart = $request->cookie('cart');
-            $panierFormat = [];
 
-            // Vérifier si le cookie existe
-            if ($cart !== null) {
-                $cart = json_decode($cart, true);
-
-                foreach($cart as $productId => $quantity)
-                {
-                    $product = Product::find($productId);
-                    if ($product) {
-                        // Exemple d'utilisation correcte de setAttribute()
-                        $product->setAttribute('quantity', $quantity);
-                        $product->setAttribute('total_price', $quantity * $product->price);
-
-                        array_push($panierFormat, $product); 
-                    }
-                }
-            } else {
-                // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
-                $panierFormat = [];
-            }
+            $listUsers = User::where('id', '!=', $user->id)->get();
+            
+            $panierFormat = $request->panierFormat;
             return view('admin.users', compact('listUsers', 'panierFormat'));
         }
     }   
