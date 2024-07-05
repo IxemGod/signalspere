@@ -54,6 +54,16 @@ class CommanderController extends Controller
     }
 
 
+    public function generateOrderNumber()
+    {
+        do {
+            $orderNumber = 'ORD-' . strtoupper(Str::random(10));
+        } while (Commande::where('numeroCommande', $orderNumber)->exists());
+
+        return $orderNumber;
+    }
+
+
     public function validate(Request $request)
     {    
         // try {
@@ -111,8 +121,11 @@ class CommanderController extends Controller
                 }
             
                 // Création d'une nouvelle commande
+
+                $numeroCommande = $this->generateOrderNumber();
                 $commande = new Commande();
                 $commande->date = now(); // Utilisez la date actuelle
+                $commande->numeroCommande = $numeroCommande;
                 $commande->price = $totalprice - $reduction; // Soustraire la réduction du prix total
                 $commande->id_codepromo = $promoCode ? $promoCode->id : null; // Si un code promo a été utilisé, enregistrer son ID
                 
