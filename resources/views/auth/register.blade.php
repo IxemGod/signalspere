@@ -1,6 +1,6 @@
-@include('header');
+@include('header')
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" style="background: white;">
         @csrf
 
         <!-- Name -->
@@ -51,4 +51,4 @@
         </div>
     </form>
 </x-guest-layout>
-@include('footer');
+@include('footer')

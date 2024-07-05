@@ -1,4 +1,4 @@
-@include('header');
+@include('header')
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-2" :status="session('status')" />
@@ -51,4 +51,4 @@
         </div>
     </form>
 </x-guest-layout>
-@include('footer');
+@include('footer')
