@@ -151,7 +151,7 @@ class CommanderController extends Controller
                     $hashedPassword = Hash::make($psw);
                     // Stocker le mot de passe hashé dans l'utilisateur
                     $user->password = $hashedPassword;
-                    $user->role_id = 2;
+                    $user->usertype = "user";
                     $user->state = "true";
                     // Enregistrer l'utilisateur
                     $user->save();

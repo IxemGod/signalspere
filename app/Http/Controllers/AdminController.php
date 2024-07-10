@@ -7,36 +7,60 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Commande;
+use App\Models\ProductCommande;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
     public function index(Request $request)
     {
-
         $user = Auth::user();
-
-        if($user->usertype == "user" or $user->state != "true")
+        if($user->usertype == "user" and $user->state == "true")
         {
-            return view('dashboard');
+            $orderCount = Commande::where('id_user', $user->id)->count();
+            $orders = Commande::where('id_user', $user->id)->get();
+            $total_price = 0.00;
+            $Nbrproducts = 0;
+            foreach($orders as $order){
+                $total_price = $total_price + $order->price;
+                $products = ProductCommande::where('id_command', $order->id)->get();
+                foreach( $products as $product)
+                {
+                    $Nbrproducts = $Nbrproducts + $product->quantity;
+                }
+            }     
+            $panierFormat = $request->panierFormat;
+            $message = $request->message;
+            return view('dashboard', compact("panierFormat", "user", "orderCount", "total_price", "Nbrproducts", "message"));
         }
-        else{
+        elseif($user->usertype == "admin" and $user->state == "true"){
             $panierFormat = $request->panierFormat;
             return view('admin.dashboard', compact("panierFormat"));
         }
-
-      
-
+        else{
+            $panierFormat = $request->panierFormat;
+            return view('auth.login', compact("panierFormat"));
+        }
     }
 
-    public function indexProducts(Request $request)
+    public function indexProductsAdmin(Request $request)
     {
 
         $user = Auth::user();
 
-        if($user->usertype == "user" or $user->state != "true")
+        if($user->usertype == "user")
         {
-            return view('dashboard');
+            $panierFormat = $request->panierFormat;
+            return view('dashboard', compact("panierFormat"));
+        }
+        elseif($user->state != "true"){
+            $panierFormat = $request->panierFormat;
+            return view('auth.login', compact("panierFormat"));
+            
         }
         else{
             $listProduits = Product::paginate(60);
@@ -45,12 +69,18 @@ class AdminController extends Controller
         }
     }
 
-    public function editProduct($id, Request $request)
+    public function editProductAdmin($id, Request $request)
     {
         $user = Auth::user();
-        if($user->usertype == "user" or $user->state != "true")
+        if($user->usertype == "user")
         {
-            return view('dashboard');
+            $panierFormat = $request->panierFormat;
+            return view('dashboard', compact("panierFormat"));
+        }
+        elseif($user->state != "true"){
+            $panierFormat = $request->panierFormat;
+            return view('auth.login', compact("panierFormat"));
+            
         }
         else{
             $productShow = Product::find($id);
@@ -58,12 +88,18 @@ class AdminController extends Controller
             return view('admin.editProduct', compact('productShow', 'panierFormat'));
         }
     }
-    public function confirmModifProduct(Request $request)
+    public function confirmModifProductAdmin(Request $request)
     {
         $user = Auth::user();
-        if($user->usertype == "user" or $user->state != "true")
+        if($user->usertype == "user")
         {
-            return view('dashboard');
+            $panierFormat = $request->panierFormat;
+            return view('dashboard', compact("panierFormat"));
+        }
+        elseif($user->state != "true"){
+            $panierFormat = $request->panierFormat;
+            return view('auth.login', compact("panierFormat"));
+            
         }
         else{
             $request->validate([
@@ -85,22 +121,25 @@ class AdminController extends Controller
             $productShow->save();
 
             $productShow = Product::find($request->idProduct);
-
-
-
             $panierFormat = $request->panierFormat;
             return view('admin.editProduct', compact('productShow', 'panierFormat'));
         }
     }
 
-    public function indexUsers(Request $request)
+    public function indexUsersAdmin(Request $request)
     {
 
         $user = Auth::user();
 
-        if($user->usertype == "user" or $user->state != "true" or $user->state != "true")
+        if($user->usertype == "user")
         {
-            return view('dashboard');
+            $panierFormat = $request->panierFormat;
+            return view('dashboard', compact("panierFormat"));
+        }
+        elseif($user->state != "true"){
+            $panierFormat = $request->panierFormat;
+            return view('auth.login', compact("panierFormat"));
+            
         }
         else{
 
@@ -110,16 +149,20 @@ class AdminController extends Controller
         }
     }
 
-    public function modifState(Request $request)
+    public function modifStateAdmin(Request $request)
     {
         $user = Auth::user();
-
-        if($user->usertype == "user" or $user->state != "true")
+        if($user->usertype == "user")
         {
-            return view('dashboard');
+            $panierFormat = $request->panierFormat;
+            return view('dashboard', compact("panierFormat"));
+        }
+        elseif($user->state != "true"){
+            $panierFormat = $request->panierFormat;
+            return view('auth.login', compact("panierFormat"));
+            
         }
         else{
-
             if($request->state == "true"){
                 $stateChage = "false";
             }
@@ -130,17 +173,86 @@ class AdminController extends Controller
                 'state' => 'required|string|max:11'
                 // Ajoutez d'autres règles de validation si nécessaire
             ]);
-            // Trouver l'utilisateur par son ID
             $user = User::findOrFail($request->id);
-            // Mettre à jour les informations de l'utilisateur
             $user->state = $stateChage;
-            // Sauvegarder les modifications
             $user->save();
-
             $listUsers = User::where('id', '!=', $user->id)->get();
-            
             $panierFormat = $request->panierFormat;
             return view('admin.users', compact('listUsers', 'panierFormat'));
         }
-    }   
+    }  
+
+
+    public function confirmModifUserClient(Request $request)
+    {
+        $user = Auth::user();
+        if($user->usertype == "admin")
+        {
+            $panierFormat = $request->panierFormat;
+            return view('admin.dashboard', compact("panierFormat"));
+        }
+        elseif($user->state != "true"){
+            $panierFormat = $request->panierFormat;
+            return view('auth.login', compact("panierFormat"));    
+        }
+        else{
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'phone' => 'required|regex:/^[0-9]{10}$/',
+            ]);
+
+
+            if ($validator->fails()) {
+                $passe;
+            }
+            else{
+                $users = User::findOrFail($request->id);
+                $users->name = $request->input('name');
+                $users->email = $request->input('email');
+                $users->phone = $request->input('phone');
+                $users->save();
+            }
+            return Redirect::route('dashboard');
+
+        }
+    }
+
+    public function confirmModifMdpClient(Request $request)
+    {
+        $user = Auth::user();
+        if($user->usertype == "admin")
+        {
+            $panierFormat = $request->panierFormat;
+            return view('admin.dashboard', compact("panierFormat"));
+        }
+        elseif($user->state != "true"){
+            $panierFormat = $request->panierFormat;
+            return view('auth.auth.login', compact("panierFormat"));
+            
+        }
+        else{
+            $validator = Validator::make($request->all(), [
+                'newPswd' => 'required|string|min:8|max:255',
+                'ConfirmPswd' => 'required|string|min:8|max:255'
+            ]);
+            if ($validator->fails()) {
+                $passe;
+            }
+            else{
+
+                if($request->newPswd == $request->ConfirmPswd)
+                {
+                    $password = Hash::make($request->ConfirmPswd);
+                    $users = User::findOrFail($request->id);
+                    $users->password = $password;
+                    $users->save();
+                }
+            }
+            return Redirect::route('dashboard');
+
+        }
+    }
+    
 }
+  

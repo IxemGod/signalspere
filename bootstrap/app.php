@@ -15,7 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->use([
             \App\Http\Middleware\Cart::class,
         ]);
-   })
+   })->withMiddleware(function (Middleware $middleware) {
+    $middleware->use([
+            \App\Http\Middleware\InfoUser::class,
+        ]);
+    })
     ->withMiddleware(function (Middleware $middleware) {
         //
     })

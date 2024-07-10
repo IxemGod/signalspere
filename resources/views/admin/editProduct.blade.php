@@ -1,4 +1,4 @@
-@include("header");
+@include("header")
 <title>Edtion du produit</title>
 <section class="formulaireAdminModifProduct">
     <form action="modificationProduct" method="POST" >
@@ -17,5 +17,5 @@
         <button>Modifier</button>
     </form>
 </section>
-@include("footer");
+@include("footer")
 

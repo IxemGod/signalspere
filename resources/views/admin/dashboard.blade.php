@@ -1,4 +1,4 @@
-@include("header");
+@include("header")
 <title>Tableau de bord</title>
 <section class="sectionAdministrateur">
 
@@ -22,4 +22,4 @@
 </section>
 
 
-@include("footer");
+@include("footer")

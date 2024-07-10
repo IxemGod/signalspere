@@ -1,4 +1,4 @@
-@include("header");
+@include("header")
 
 
 <section class="AdminListeUsers">
@@ -31,4 +31,4 @@
     </div>
 </section>
 
-@include("footer");
+@include("footer")

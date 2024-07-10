@@ -1,4 +1,4 @@
-@include("header");
+@include("header")
 <title>Validation de la commande</title>
 
 <section class="formulairecommander">
@@ -26,4 +26,4 @@
     </div>
 </section>
 
-@include("footer");
+@include("footer")
