@@ -99,30 +99,38 @@ class AdminController extends Controller
         elseif($user->state != "true"){
             $panierFormat = $request->panierFormat;
             return view('auth.login', compact("panierFormat"));
-            
         }
         else{
-            $request->validate([
+            $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
                 'description' => 'required|string',
                 // Ajoutez d'autres règles de validation si nécessaire
             ]);
-            
-            // Trouver le produit par son ID
-            $productShow = Product::findOrFail($request->idProduct);
-    
-            // Mettre à jour les informations du produit
-            $productShow->name = $request->input('name');
-            $productShow->price = $request->input('price');
-            $productShow->description = $request->input('description');
-            // Mettre à jour d'autres champs si nécessaire
-            
-            // Sauvegarder les modifications
-            $productShow->save();
 
-            $productShow = Product::find($request->idProduct);
-            $panierFormat = $request->panierFormat;
-            return view('admin.editProduct', compact('productShow', 'panierFormat'));
+            if ($validator->fails()) {
+                $status = "red";
+                $message = "Les informations sont incorects.";
+            }
+            else{
+                // Trouver le produit par son ID
+                $productShow = Product::findOrFail($request->idProduct);
+        
+                // Mettre à jour les informations du produit
+                $productShow->name = $request->input('name');
+                $productShow->price = $request->input('price');
+                $productShow->description = $request->input('description');
+                // Mettre à jour d'autres champs si nécessaire
+                
+                // Sauvegarder les modifications
+                $productShow->save();
+    
+                $productShow = Product::find($request->idProduct);
+                $panierFormat = $request->panierFormat;
+                $status = "green";
+                $message = "Les informations ont été modifié";
+            }
+            
+            return view('admin.editProduct', compact('productShow', 'panierFormat'))->with('statusEditProduct', $status)->with('message', $message);;
         }
     }
 
@@ -204,7 +212,8 @@ class AdminController extends Controller
 
 
             if ($validator->fails()) {
-                $passe;
+                $status = "red";
+                $message = "Vos informations sont incorects.";
             }
             else{
                 $users = User::findOrFail($request->id);
@@ -212,8 +221,10 @@ class AdminController extends Controller
                 $users->email = $request->input('email');
                 $users->phone = $request->input('phone');
                 $users->save();
+                $status = "green";
+                $message = "Vos informations ont été modifiés";
             }
-            return Redirect::route('dashboard');
+            return Redirect::route('dashboard')->with('statusSettings', $status)->with('message', $message);
 
         }
     }
@@ -237,7 +248,9 @@ class AdminController extends Controller
                 'ConfirmPswd' => 'required|string|min:8|max:255'
             ]);
             if ($validator->fails()) {
-                $passe;
+                $status = "red";
+                $message = "Votre mot de passe doit faire entre 8 et 255 caractères.";
+
             }
             else{
 
@@ -247,9 +260,15 @@ class AdminController extends Controller
                     $users = User::findOrFail($request->id);
                     $users->password = $password;
                     $users->save();
+                    $status = "green";
+                    $message = "Votre mot de passe à été modifié.";
+                }
+                else{
+                    $status = "red";
+                    $message = "Vos deux mot de passes ne se correspondent pas.";   
                 }
             }
-            return Redirect::route('dashboard');
+            return Redirect::route('dashboard')->with('statusPswd', $status)->with('message', $message);
 
         }
     }

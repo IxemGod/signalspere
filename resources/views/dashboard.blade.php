@@ -49,6 +49,9 @@
                 <p><label>Téléphone</label>
                 <input type="text" name="phone" value="{{$user->phone}}" required></p>
                 <input type="number" name="id" value="{{$user->id}}" hidden>
+                @if (session('statusSettings'))
+                    <p style="color: {{ session('statusSettings') }};">{{ session('message') }}</p>
+                @endif  
                 <button>Modifier</button>
             </form>
             
@@ -59,8 +62,9 @@
                 <p><label>Confirmation du mot de passe</label>
                 <input type="text" name="ConfirmPswd" required></p>
                 <input type="number" name="id" value="{{$user->id}}" hidden>
-                
-                
+                @if (session('statusPswd'))
+                    <p style="color: {{ session('statusPswd') }};">{{ session('message') }}</p>
+                @endif                
                 <button>Modifier</button>
             </form>
         </div>
