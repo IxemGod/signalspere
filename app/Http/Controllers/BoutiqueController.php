@@ -80,7 +80,7 @@ class BoutiqueController extends Controller
             }
         }
 
-        $panierFormat = $request->panierFormat;
-        return view('boutique', compact('articles' ,'ListeCategoryUnique','panierFormat'));
+        
+        return view('boutique', compact('request','articles' ,'ListeCategoryUnique'));
     }
 }

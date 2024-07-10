@@ -5,9 +5,9 @@
     <nav>
         <a href="#profile">Profil</a>
         <a href="#notifications">Notifications</a>
-        <a href="#stats">Statistiques</a>
-        <a href="#messages">Messages</a>
         <a href="#settings">Paramètres</a>
+        <a href="#orders">Commande</a>
+        <a href="#messages">Messages</a>
         <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit">Déconnexion</button>
@@ -68,6 +68,32 @@
                 <button>Modifier</button>
             </form>
         </div>
+        </section>
+
+        <section id="orders" class="card">
+            <h2>Commandes</h2>
+
+            <table class="OrderListe">
+                <thead>
+                    <tr>
+                        <th>Numéro de Commande</th>
+                        <th>Date</th>
+                        <th>Prix</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($orders as $order)
+                <tr>
+                    <td>{{$order->numeroCommande}}</td>
+                    <td>{{$order->date}}</td>
+                    <td>100.00€</td>
+                    <td><a href="detail/001">Voir</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+            </table>
+            
         </section>
 </section>
 

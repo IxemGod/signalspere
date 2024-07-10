@@ -14,7 +14,7 @@
                 <th></th>
             </th>
 
-            @foreach($panierFormat as $product)
+            @foreach($request->panierFormat as $product)
             <tr>
                 <form method="POST" action="/cart/delete/{{$product->id}}">
                     @csrf

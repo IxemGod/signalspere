@@ -117,7 +117,7 @@
 <div class="overlay-cart" id="overlay-cart">
     <div class="cart">
             <h2>Votre panier</h2>
-        @foreach($panierFormat as $product)
+        @foreach($request->panierFormat as $product)
             <div class="product">
                 <div class="img">
                     <a href="/products/{{ $product->id }}">

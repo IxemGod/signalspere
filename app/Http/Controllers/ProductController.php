@@ -12,10 +12,6 @@ class ProductController extends Controller
     {
         $productSolo = Product::find($id);
 
-        $panierFormat = $request->panierFormat;
-        
-        return view('products.show', compact('productSolo', 'panierFormat'));
-
-        
+        return view('products.show', compact('request','productSolo'));
     }
 }

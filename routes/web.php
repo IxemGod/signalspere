@@ -24,23 +24,24 @@ Route::get('/boutique/filter', [BoutiqueController::class, 'index'])->name('arti
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show')->middleware(Cart::class);
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add')->middleware('web');
 Route::post('/cart/delete/{id}', [CartController::class, 'deleteToCart']);
+Route::get('/detail/{numeroCommande}', [AdminController::class, 'showOrder'])->middleware(Cart::class);
 Route::get('/commander', [CommanderController::class, 'show'])->middleware(Cart::class);
 Route::post('/commander/validate', [CommanderController::class, 'validate']);
 Route::get('/response', function () {
     return view('response');
 })->name('response');
 Route::get('/contact', function () {
-    $panierFormat = request()->panierFormat;
-    return view('contact', compact('panierFormat'));
+    $request = request();
+    return view('contact', compact("request"));
 })->middleware(Cart::class);
 Route::get('/apropos', function () {
-    $panierFormat = request()->panierFormat;
-    return view('apropos', compact('panierFormat'));
+    $request = request();
+    return view('apropos', compact("request"));
 })->middleware(Cart::class);
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/politique', function () {
-    $panierFormat = request()->panierFormat;
-    return view('confidentialite', compact('panierFormat'));
+    $request = request();
+    return view('confidentialite', compact("request"));
 })->middleware(Cart::class);
 Route::get('/welcome', function () {
     return view('welcome');

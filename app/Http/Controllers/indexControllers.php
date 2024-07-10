@@ -37,8 +37,6 @@ class indexControllers extends Controller
         }
 
         // Retourner la vue avec les données
-
-        $panierFormat = $request->panierFormat;
-        return view('index', compact('productsPlusVendu', 'productsNouveuté', 'panierFormat'));
+        return view('index', compact('request','productsPlusVendu', 'productsNouveuté'));
     }
 }

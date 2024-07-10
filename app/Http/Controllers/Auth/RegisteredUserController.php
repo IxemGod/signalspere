@@ -19,8 +19,8 @@ class RegisteredUserController extends Controller
      */
     public function create(Request $request): View
     {
-        $panierFormat = $request->panierFormat;
-        return view('auth.register', compact('panierFormat'));
+        
+        return view('auth.register', compact("request"));
     }
 
     /**

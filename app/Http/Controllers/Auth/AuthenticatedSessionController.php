@@ -16,8 +16,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(Request $request): View
     {
-        $panierFormat = $request->panierFormat;
-        return view('auth.login', compact('panierFormat'));
+        
+        return view('auth.login', compact("request"));
     }
 
     /**

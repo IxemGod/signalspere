@@ -11,7 +11,7 @@ class PanierController extends Controller
 {
     public function index(Request $request)
     {
-        $panierFormat = $request->panierFormat;
-        return view('panier', compact('panierFormat'));
+        
+        return view('panier', compact("request"));
     }
 }

@@ -33,17 +33,18 @@ class AdminController extends Controller
                     $Nbrproducts = $Nbrproducts + $product->quantity;
                 }
             }     
-            $panierFormat = $request->panierFormat;
+            
             $message = $request->message;
-            return view('dashboard', compact("panierFormat", "user", "orderCount", "total_price", "Nbrproducts", "message"));
+
+            return view('dashboard', compact("request", "user", "orderCount", "total_price", "Nbrproducts", "message", "orders"));
         }
         elseif($user->usertype == "admin" and $user->state == "true"){
-            $panierFormat = $request->panierFormat;
-            return view('admin.dashboard', compact("panierFormat"));
+            
+            return view('admin.dashboard', compact("request"));
         }
         else{
-            $panierFormat = $request->panierFormat;
-            return view('auth.login', compact("panierFormat"));
+            
+            return view('auth.login', compact("request"));
         }
     }
 
@@ -54,18 +55,18 @@ class AdminController extends Controller
 
         if($user->usertype == "user")
         {
-            $panierFormat = $request->panierFormat;
-            return view('dashboard', compact("panierFormat"));
+            
+            return view('dashboard', compact("request"));
         }
         elseif($user->state != "true"){
-            $panierFormat = $request->panierFormat;
-            return view('auth.login', compact("panierFormat"));
+            
+            return view('auth.login', compact("request"));
             
         }
         else{
             $listProduits = Product::paginate(60);
-            $panierFormat = $request->panierFormat;
-            return view('admin.products', compact('listProduits', 'panierFormat'));
+            
+            return view('admin.products', compact('request','listProduits'));
         }
     }
 
@@ -74,18 +75,18 @@ class AdminController extends Controller
         $user = Auth::user();
         if($user->usertype == "user")
         {
-            $panierFormat = $request->panierFormat;
-            return view('dashboard', compact("panierFormat"));
+            
+            return view('dashboard', compact("request"));
         }
         elseif($user->state != "true"){
-            $panierFormat = $request->panierFormat;
-            return view('auth.login', compact("panierFormat"));
+            
+            return view('auth.login', compact("request"));
             
         }
         else{
             $productShow = Product::find($id);
-            $panierFormat = $request->panierFormat;
-            return view('admin.editProduct', compact('productShow', 'panierFormat'));
+            
+            return view('admin.editProduct', compact('request','productShow'));
         }
     }
     public function confirmModifProductAdmin(Request $request)
@@ -93,12 +94,12 @@ class AdminController extends Controller
         $user = Auth::user();
         if($user->usertype == "user")
         {
-            $panierFormat = $request->panierFormat;
-            return view('dashboard', compact("panierFormat"));
+            
+            return view('dashboard', compact("request"));
         }
         elseif($user->state != "true"){
-            $panierFormat = $request->panierFormat;
-            return view('auth.login', compact("panierFormat"));
+            
+            return view('auth.login', compact("request"));
         }
         else{
             $validator = Validator::make($request->all(), [
@@ -125,12 +126,12 @@ class AdminController extends Controller
                 $productShow->save();
     
                 $productShow = Product::find($request->idProduct);
-                $panierFormat = $request->panierFormat;
+                
                 $status = "green";
                 $message = "Les informations ont été modifié";
             }
             
-            return view('admin.editProduct', compact('productShow', 'panierFormat'))->with('statusEditProduct', $status)->with('message', $message);;
+            return view('admin.editProduct', compact('request','productShow'))->with('statusEditProduct', $status)->with('message', $message);;
         }
     }
 
@@ -141,19 +142,19 @@ class AdminController extends Controller
 
         if($user->usertype == "user")
         {
-            $panierFormat = $request->panierFormat;
-            return view('dashboard', compact("panierFormat"));
+            
+            return view('dashboard', compact("request"));
         }
         elseif($user->state != "true"){
-            $panierFormat = $request->panierFormat;
-            return view('auth.login', compact("panierFormat"));
+            
+            return view('auth.login', compact("request"));
             
         }
         else{
 
             $listUsers = User::where('id', '!=', $user->id)->get();
-            $panierFormat = $request->panierFormat;
-            return view('admin.users', compact('listUsers', 'panierFormat'));
+            
+            return view('admin.users', compact('request','listUsers'));
         }
     }
 
@@ -162,12 +163,12 @@ class AdminController extends Controller
         $user = Auth::user();
         if($user->usertype == "user")
         {
-            $panierFormat = $request->panierFormat;
-            return view('dashboard', compact("panierFormat"));
+            
+            return view('dashboard', compact("request"));
         }
         elseif($user->state != "true"){
-            $panierFormat = $request->panierFormat;
-            return view('auth.login', compact("panierFormat"));
+            
+            return view('auth.login', compact("request"));
             
         }
         else{
@@ -185,8 +186,8 @@ class AdminController extends Controller
             $user->state = $stateChage;
             $user->save();
             $listUsers = User::where('id', '!=', $user->id)->get();
-            $panierFormat = $request->panierFormat;
-            return view('admin.users', compact('listUsers', 'panierFormat'));
+            
+            return view('admin.users', compact('request', 'listUsers'));
         }
     }  
 
@@ -196,12 +197,12 @@ class AdminController extends Controller
         $user = Auth::user();
         if($user->usertype == "admin")
         {
-            $panierFormat = $request->panierFormat;
-            return view('admin.dashboard', compact("panierFormat"));
+            
+            return view('admin.dashboard', compact("request"));
         }
         elseif($user->state != "true"){
-            $panierFormat = $request->panierFormat;
-            return view('auth.login', compact("panierFormat"));    
+            
+            return view('auth.login', compact("request"));    
         }
         else{
             $validator = Validator::make($request->all(), [
@@ -234,12 +235,12 @@ class AdminController extends Controller
         $user = Auth::user();
         if($user->usertype == "admin")
         {
-            $panierFormat = $request->panierFormat;
-            return view('admin.dashboard', compact("panierFormat"));
+            
+            return view('admin.dashboard', compact("request"));
         }
         elseif($user->state != "true"){
-            $panierFormat = $request->panierFormat;
-            return view('auth.auth.login', compact("panierFormat"));
+            
+            return view('auth.auth.login', compact("request"));
             
         }
         else{
@@ -269,6 +270,26 @@ class AdminController extends Controller
                 }
             }
             return Redirect::route('dashboard')->with('statusPswd', $status)->with('message', $message);
+
+        }
+    }
+
+    public function showOrder(Request $request)
+    {
+        $user = Auth::user();
+        if($user->usertype == "admin")
+        {
+            
+            return view('admin.dashboard', compact("request"));
+        }
+        elseif($user->state != "true"){
+            
+            return view('auth.auth.login', compact("request"));
+            
+        }
+        else{
+        
+           return view('order', compact("request"));
 
         }
     }
