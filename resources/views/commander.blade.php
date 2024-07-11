@@ -18,7 +18,9 @@
             <p>Prix commande : {{$totalpriceProduct}}€</p>
             <p>Livraison : +{{$pricelivraison}}€</p>
             <p>Prix total : {{$totalprice}}€</p>
-
+            @if (session('test'))
+                    <p style="color: {{ session('code') }};">{{ session('message') }}</p>
+                @endif 
             <button>Valider la commande</button>
         </form>
 

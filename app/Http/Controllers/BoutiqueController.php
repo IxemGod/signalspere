@@ -15,8 +15,8 @@ class BoutiqueController extends Controller
     {
         $query = Product::query();
         $queryCat = Category::all();
-        $listeArticleCategoryReq = array();
-        
+    $listeArticleCategoryReq = array();
+    
         if (request()->has('category')) {
     
             foreach($queryCat as $categoryCurrent)
@@ -69,6 +69,29 @@ class BoutiqueController extends Controller
         else{
         $articles = $listeArticleCategoryReq;
         }
+
+
+        $listecategories = Category::all();
+        $ListeCategoryUnique = array();
+        foreach($listecategories as $dataOneCategori){
+            if(!in_array(strtoupper($dataOneCategori->name), $ListeCategoryUnique) and $dataOneCategori->name != "new")
+            {
+                $ListeCategoryUnique[] = strtoupper($dataOneCategori->name);
+            }
+        }
+
+        
+        return view('boutique', compact('request','articles' ,'ListeCategoryUnique'));
+    }
+
+
+    public function search(Request $request)
+    {
+        $query = Product::query();
+        $search = $request->input('search');
+        $articles = Product::where('name', 'like', "%$search%")
+                           ->orWhere('description', 'like', "%$search%")
+                           ->get();
 
 
         $listecategories = Category::all();

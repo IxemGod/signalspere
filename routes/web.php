@@ -25,11 +25,9 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add')->middleware('web');
 Route::post('/cart/delete/{id}', [CartController::class, 'deleteToCart']);
 Route::get('/detail/{numeroCommande}', [AdminController::class, 'showOrder'])->middleware(Cart::class);
-Route::get('/commander', [CommanderController::class, 'show'])->middleware(Cart::class);
+Route::get('/search', [BoutiqueController::class, 'search'])->middleware(Cart::class)->name('search');
+Route::get('/commander', [CommanderController::class, 'show'])->name("commander")->middleware(Cart::class);
 Route::post('/commander/validate', [CommanderController::class, 'validate']);
-Route::get('/response', function () {
-    return view('response');
-})->name('response');
 Route::get('/contact', function () {
     $request = request();
     return view('contact', compact("request"));

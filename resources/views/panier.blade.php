@@ -28,6 +28,7 @@
             </tr>
             @endforeach
         </table>
+        <a href="/commander" class="validerOrder">Valider la commande</a>
     </div>
 
 

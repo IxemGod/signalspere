@@ -25,8 +25,9 @@
         <a href="/apropos">A propos</a>
 
         <div class="searchBar">
-            <form>
-                <input type="text" placeholder="Rechercher un article">
+            <form method="get" action="{{route('search')}}">
+            @csrf
+                <input type="text" name="search" placeholder="Rechercher un article">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
@@ -55,8 +56,9 @@
         </div>
 
         <div class="searchBar">
-            <form>
-                <input type="text" placeholder="Rechercher un article ">
+            <form method="get" action="{{route('search')}}">
+                @csrf
+                <input type="text" name="search" placeholder="Rechercher un article">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>

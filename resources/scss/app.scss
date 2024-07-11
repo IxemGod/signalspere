@@ -953,7 +953,11 @@ body {
         .container {
             width: 70%;
             display: flex;
+            justify-content: end;
+            align-items: end;
             flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
 
             table {
                 width: 100%;
@@ -980,7 +984,18 @@ body {
             h1 {
                 font-size: 2.986rem;
                 font-weight: bold;
+                align-self: center;
             }
+
+        .validerOrder{
+            background-color: #f17d25;
+            padding: 10px;
+            font-weight: bold;
+            color: white;
+            width: 200px;
+            text-align: right;
+            margin-bottom: 20px;
+        }
         }
     }
 
@@ -1064,9 +1079,19 @@ body {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
+            justify-content: space-between;
             div{
+                h2{
+                    margin-left: 0px;
+                    text-align: left;
+                }
                 form{
-                    margin-left: 20%;
+                    button{
+                        background-color: #f17d25;
+                        color: white;
+                        padding: 10px;
+                        font-weight: bold;
+                    }
                 }
             } 
         }

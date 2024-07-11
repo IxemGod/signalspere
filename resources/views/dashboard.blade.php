@@ -4,7 +4,6 @@
 
 
         <section id="profile" class="card profile-card">
-            <img src="https://via.placeholder.com/100" alt="Photo de profil">
             <div>
                 <h2>{{$user->name}}</h2>
                 <p>{{$user->email}}</p>
