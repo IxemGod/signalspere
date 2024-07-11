@@ -2,23 +2,21 @@
     <title>Espace Client</title>
 <section class="indexInfoUserDashboard">
 
-    <nav>
-        <a href="#profile">Profil</a>
-        <a href="#notifications">Notifications</a>
-        <a href="#settings">Paramètres</a>
-        <a href="#orders">Commande</a>
-        <a href="#messages">Messages</a>
-        <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit">Déconnexion</button>
-        </form>
-    </nav>
+
         <section id="profile" class="card profile-card">
             <img src="https://via.placeholder.com/100" alt="Photo de profil">
             <div>
                 <h2>{{$user->name}}</h2>
                 <p>{{$user->email}}</p>
             </div>
+
+            <div>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">Déconnexion</button>
+                </form>
+            </div>
+
         </section>
         <section id="stats" class="card stats">
             <div class="stat">
@@ -58,9 +56,9 @@
             <form action="modificationPswdClient" method="POST" >
                 @csrf
                 <p><label>Nouveau mot de passe</label>
-                <input type="text" name="newPswd"required></p>
+                <input type="password" name="newPswd"required placeholder="Nouveau mot de passe"></p>
                 <p><label>Confirmation du mot de passe</label>
-                <input type="text" name="ConfirmPswd" required></p>
+                <input type="password" name="ConfirmPswd" required placeholder="Confirmation du mot de passe"></p>
                 <input type="number" name="id" value="{{$user->id}}" hidden>
                 @if (session('statusPswd'))
                     <p style="color: {{ session('statusPswd') }};">{{ session('message') }}</p>
@@ -86,7 +84,7 @@
                 <tr>
                     <td>{{$order->numeroCommande}}</td>
                     <td>{{$order->date}}</td>
-                    <td>100.00€</td>
+                    <td>{{$order->price}} €</td>
                     <td><a href="detail/{{$order->id}}">Voir</a></td>
                 </tr>
                 @endforeach

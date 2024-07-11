@@ -240,7 +240,7 @@ class AdminController extends Controller
         }
         elseif($user->state != "true"){
             
-            return view('auth.auth.login', compact("request"));
+            return view('auth.login', compact("request"));
             
         }
         else{
@@ -284,31 +284,36 @@ class AdminController extends Controller
         }
         elseif($user->state != "true"){
             
-            return view('auth.auth.login', compact("request"));
+            return view('auth.login', compact("request"));
             
         }
         else{
             // dd($numerocommande);
             $order = Commande::find($idCommande);
-            $products = ProductCommande::where("id_command", $idCommande)->get();
 
-            // dd($products);
-            $productsliste = [];
-            foreach($products as $product){
-                $productInfo = Product::find($product->id_product);
-                $data = [
-                    'quantity' => $product->quantity,
-                    'name' => $productInfo->name,
-                    'pictures' => $productInfo->pictures,
-                    'price' => $productInfo->price,
-                    'id' => $productInfo->id
-                ];
+            if($order->id_user == $user->id)
+            {
 
-                $productsliste[] = $data;
+                $products = ProductCommande::where("id_command", $idCommande)->get();
+                
+                // dd($products);
+                $productsliste = [];
+                foreach($products as $product){
+                    $productInfo = Product::find($product->id_product);
+                    $data = [
+                        'quantity' => $product->quantity,
+                        'name' => $productInfo->name,
+                        'pictures' => $productInfo->pictures,
+                        'price' => $productInfo->price,
+                        'id' => $productInfo->id
+                    ];
+                    $productsliste[] = $data;
+                }
+                return view('order', compact("request", "order","productsliste"));
             }
-
-            // dd($productsliste);
-            return view('order', compact("request", "order","productsliste"));
+            else{
+                return view('auth.login', compact("request"));
+            }
 
         }
     }

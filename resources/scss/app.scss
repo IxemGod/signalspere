@@ -1053,22 +1053,6 @@ body {
     }
 
     .indexInfoUserDashboard {
-        nav {
-            float: left;
-            width: 200px;
-            background: #333;
-            padding: 20px;
-            height: 100vh;
-        }
-        nav a {
-            color: white;
-            padding: 10px;
-            text-decoration: none;
-            display: block;
-        }
-        nav a:hover {
-            background-color: #575757;
-        }
         .card {
             background-color: white;
             margin-bottom: 20px;
@@ -1079,6 +1063,12 @@ body {
         .profile-card {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            div{
+                form{
+                    margin-left: 20%;
+                }
+            } 
         }
         .profile-card img {
             border-radius: 50%;
@@ -1087,12 +1077,15 @@ body {
         .stats {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .stat {
             background-color: #fff;
             padding: 20px;
             border-radius: 5px;
             width: 30%;
+            min-width: 300px;
             text-align: center;
         }
 
@@ -1113,8 +1106,20 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
+
+            @media (max-width: 768px) {
+                table {
+                    font-size: 12px; /* Réduire la taille de la police pour les petits écrans */
+                }
+
+                th, td {
+                    padding: 8px; /* Réduire le padding des cellules */
+                }
+            }
             .OrderListe{
                 margin-top: 20px;
+
+              
                 
                 table {
                     width: 50%;
@@ -1153,7 +1158,8 @@ body {
                     margin-top: 40px;
                     display: flex;
                     flex-direction: column;
-                    width: 40%;
+                    width: 30%;
+                    min-width: 300px;
                     p {
                         display: flex;
                         flex-direction: column;
@@ -1188,7 +1194,7 @@ body {
             margin-left: 50px;
             text-align: center;
         }
-        
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -1198,6 +1204,15 @@ body {
             border-collapse: collapse;
             margin-bottom: 20px;
         }
+        @media (max-width: 768px) {
+            table {
+                font-size: 12px; /* Réduire la taille de la police pour les petits écrans */
+            }
+
+            th, td {
+                padding: 8px; /* Réduire le padding des cellules */
+            }
+        }
 
         th, td {
             padding: 10px;
@@ -1206,6 +1221,7 @@ body {
 
             img{
                 width: 100px;
+                min-width: 100px;
             }
         }
 
