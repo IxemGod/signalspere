@@ -1176,6 +1176,55 @@ body {
             }
         }
     }
+
+    .detailCommande{
+
+        h2{
+            margin: 0px;
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            font-size: 1.86rem;
+            font-style: normal;
+            margin-left: 50px;
+            text-align: center;
+        }
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #f17d25;
+
+            img{
+                width: 100px;
+            }
+        }
+
+        /* Style pour l'en-tête du tableau */
+        th {
+            background-color: #f17d25;
+            color: white;
+        }
+
+        /* Style pour les lignes impaires */
+        tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* Style pour les lignes paires */
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    }
 }
 
 .prefooter {

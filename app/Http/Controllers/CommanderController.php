@@ -49,7 +49,7 @@ class CommanderController extends Controller
             // Si le cookie n'existe pas, initialisez le panier comme vide ou avec une autre logique selon vos besoins
             $panierFormat = [];
         }
-        return view('commander', compact('panierFormat','totalprice','totalpriceProduct','pricelivraison'));
+        return view('commander', compact('panierFormat',"request",'totalprice','totalpriceProduct','pricelivraison'));
 
     }
 

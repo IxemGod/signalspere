@@ -274,7 +274,7 @@ class AdminController extends Controller
         }
     }
 
-    public function showOrder(Request $request)
+    public function showOrder($idCommande, Request $request)
     {
         $user = Auth::user();
         if($user->usertype == "admin")
@@ -288,8 +288,27 @@ class AdminController extends Controller
             
         }
         else{
-        
-           return view('order', compact("request"));
+            // dd($numerocommande);
+            $order = Commande::find($idCommande);
+            $products = ProductCommande::where("id_command", $idCommande)->get();
+
+            // dd($products);
+            $productsliste = [];
+            foreach($products as $product){
+                $productInfo = Product::find($product->id_product);
+                $data = [
+                    'quantity' => $product->quantity,
+                    'name' => $productInfo->name,
+                    'pictures' => $productInfo->pictures,
+                    'price' => $productInfo->price,
+                    'id' => $productInfo->id
+                ];
+
+                $productsliste[] = $data;
+            }
+
+            // dd($productsliste);
+            return view('order', compact("request", "order","productsliste"));
 
         }
     }

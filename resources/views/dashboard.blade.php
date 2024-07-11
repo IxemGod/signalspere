@@ -79,7 +79,6 @@
                         <th>Numéro de Commande</th>
                         <th>Date</th>
                         <th>Prix</th>
-                   
                     </tr>
                 </thead>
                 <tbody>
@@ -88,7 +87,7 @@
                     <td>{{$order->numeroCommande}}</td>
                     <td>{{$order->date}}</td>
                     <td>100.00€</td>
-                    <td><a href="detail/001">Voir</a></td>
+                    <td><a href="detail/{{$order->id}}">Voir</a></td>
                 </tr>
                 @endforeach
             </tbody>
