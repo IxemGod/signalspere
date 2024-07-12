@@ -1266,6 +1266,66 @@ body {
             background-color: #ffffff;
         }
     }
+
+    .AffichageCodePromo{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+            h1 {
+                font-weight: bold;
+                font-size: 2.986rem;
+                text-align: center;
+            }
+
+            p{
+                text-align: center;
+            }
+
+            table {
+                width: 50%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+            @media (max-width: 768px) {
+                table {
+                    font-size: 12px; /* Réduire la taille de la police pour les petits écrans */
+                }
+    
+                th, td {
+                    padding: 8px; /* Réduire le padding des cellules */
+                }
+            }
+    
+            th, td {
+                padding: 10px;
+                text-align: left;
+                border: 1px solid #f17d25;
+    
+                img{
+                    width: 100px;
+                    min-width: 100px;
+                }
+            }
+    
+            /* Style pour l'en-tête du tableau */
+            th {
+                background-color: #f17d25;
+                color: white;
+            }
+        }
+    }
 }
 
 .prefooter {

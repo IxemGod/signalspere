@@ -20,7 +20,7 @@
         </a>
         <a href="/">Accueil</a>
         <a href="/boutique">Boutique</a>
-        <a href="#">Code promo</a>
+        <a href="/code-promo">Code promo</a>
         <a href="/contact">Contact</a>
         <a href="/apropos">A propos</a>
 
@@ -75,7 +75,7 @@
             <div class="overlay-content-menu">
             <a href="/">Accueil</a>
             <a href="/boutique">Boutique</a>
-            <a href="#">Code promo</a>
+            <a href="/code-promo">Code promo</a>
             <a href="/contact">Contact</a>
             <a href="/apropos">A propos</a>
             <a href="/dashboard">Espace Membre</a>

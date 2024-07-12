@@ -41,6 +41,16 @@ Route::get('/politique', function () {
     $request = request();
     return view('confidentialite', compact("request"));
 })->middleware(Cart::class);
+Route::get('/code-promo', function () {
+    $request = request();
+    return view('promocode', compact("request"));
+})->middleware(Cart::class);
+
+Route::get('/mentions-légales', function () {
+    $request = request();
+    return view('mentionslegales', compact("request"));
+})->middleware(Cart::class);
+
 Route::get('/welcome', function () {
     return view('welcome');
 });

@@ -1,4 +1,5 @@
 @include("header")
+<title>A propos - SignalSphere</title>
 <section class="AproposPageApropos">
     <div class="container">
         <div class="texte">

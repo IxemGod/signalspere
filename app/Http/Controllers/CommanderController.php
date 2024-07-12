@@ -116,7 +116,6 @@ class CommanderController extends Controller
                     'city' => 'required|string|max:150',
                     'email' => 'required|string|email|max:255',
                 ]);
-                // try{
                 if ($validator->fails())
                 {
                     $message = "Vos informations sont incorect !";
