@@ -5,18 +5,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="http://127.0.0.1:8000/image/Favicon.png">
+    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="/image/Favicon.png">
+    <!-- Importation des icon de FontAwesome -->
     <script src="https://kit.fontawesome.com/fcb8c34dd8.js" crossorigin="anonymous"></script>
 </head>
-
+<!-- Contenue du header pour la version Ordinateur -->
 <header class="headerOrdinateur">
+
     <div class="premierbandeau">
         <p>La livraison est OFFERTE dès 49€ d'achat, alors profitez-en !</p>
     </div>
-
+    <!-- Menu de navigation -->
     <nav class="deuxièmebeandeau">
-        <a href="http://127.0.0.1:8000/">
-            <img src="http://127.0.0.1:8000/image/logo.png">
+        <a href="/">
+            <img src="/image/logo.png">
         </a>
         <a href="/">Accueil</a>
         <a href="/boutique">Boutique</a>
@@ -24,6 +26,7 @@
         <a href="/contact">Contact</a>
         <a href="/apropos">A propos</a>
 
+        <!-- Champs de recherche de produit -->
         <div class="searchBar">
             <form method="get" action="{{route('search')}}">
             @csrf
@@ -32,13 +35,11 @@
             </form>
         </div>
 
-        <div class="EspaceMembrePanier">       
+        <div class="EspaceMembrePanier">
         <a href="/dashboard"><i class="fa-solid fa-user"></i></a>
-            <i class="fa-solid fa-cart-shopping" style="cursor: pointer;"></i>
+        <!-- Icon d'ouverture du panier -->
+        <i class="fa-solid fa-cart-shopping" style="cursor: pointer;"></i>
         </div>
-
-
-
     </nav>
 </header>
 
@@ -50,7 +51,7 @@
     <div class="deuxièmebeandeau">
 
         <div class="logo">
-            <a href="http://127.0.0.1:8000">
+            <a href="/">
                 <img src="/image/logo.png">
             </a>
         </div>
@@ -82,7 +83,6 @@
             <p class="closeOverlayMenu"><i class="fa-solid fa-xmark"></i> Fermer</p>
             </div>
         </div>
-
 
     </div>
 </header>

@@ -28,7 +28,7 @@ class BoutiqueController extends Controller
             }
         }
         else{
-            $listeArticleCategoryReq = Product::all();
+            $listeArticleCategoryReq = Product::query()->take(30)->get();
         }
 
 
@@ -83,6 +83,24 @@ class BoutiqueController extends Controller
         
         return view('boutique', compact('request','articles' ,'ListeCategoryUnique'));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public function search(Request $request)
